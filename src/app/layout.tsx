@@ -20,7 +20,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#0B0F17",
+  themeColor: "#FFFFFF",
 };
 
 export const metadata: Metadata = {
@@ -57,9 +57,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${jakarta.variable} ${jetbrainsMono.variable} scroll-smooth dark`}
+      className={`${jakarta.variable} ${jetbrainsMono.variable} scroll-smooth`}
     >
-      <body className="min-h-screen bg-[#0B0F17] text-[#F8FAFC] antialiased selection:bg-amber-500/30 selection:text-white flex flex-col overflow-x-hidden w-full">
+      <body className="min-h-screen bg-[#F8FAFC] text-[#0F172A] antialiased selection:bg-amber-500/20 selection:text-slate-900 flex flex-col overflow-x-hidden w-full">
         {children}
       </body>
     </html>

@@ -51,32 +51,32 @@ export const AegisMilestones: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 sm:py-28 bg-[#0B0F17] relative">
+    <section className="py-20 sm:py-28 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Grid: Image + Pillars */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
           {/* Left Column: Authentic Photography with Badge (5 cols) */}
           <div className="lg:col-span-5 relative">
-            <div className="relative h-[420px] sm:h-[500px] w-full rounded-2xl overflow-hidden border border-white/[0.1] shadow-2xl bg-slate-900">
+            <div className="relative h-[420px] sm:h-[500px] w-full rounded-2xl overflow-hidden border border-slate-200 shadow-xl bg-slate-100">
               <Image
                 src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=1200&auto=format&fit=crop"
                 alt="Certified Aegis technician heat-forming wrap on supercar bodywork"
                 fill
-                className="object-cover object-center filter brightness-[0.8] contrast-105"
+                className="object-cover object-center filter brightness-[0.95] contrast-105"
                 sizes="(max-width: 1024px) 100vw, 40vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F17] via-transparent to-transparent opacity-80" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-80" />
 
               {/* Floating Experience Badge */}
-              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-[#0B0F17]/90 border border-amber-500/40 backdrop-blur-md shadow-xl flex items-center gap-4">
+              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-white/95 border border-amber-400 backdrop-blur-md shadow-xl flex items-center gap-4">
                 <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center text-slate-950 font-black shrink-0">
                   <Award className="w-6 h-6" />
                 </div>
                 <div>
-                  <span className="text-sm font-extrabold text-white block">
+                  <span className="text-sm font-extrabold text-slate-900 block">
                     12+ Years Craftsmanship
                   </span>
-                  <span className="text-xs text-amber-400 font-mono">
+                  <span className="text-xs text-amber-800 font-mono font-bold">
                     Manhattan Flagship Cleanroom Atelier
                   </span>
                 </div>
@@ -86,18 +86,18 @@ export const AegisMilestones: React.FC = () => {
 
           {/* Right Column: 4 Core Pillars (7 cols) */}
           <div className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-amber-500/30 mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-              <span className="text-xs font-mono font-bold tracking-widest text-amber-400 uppercase">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-amber-300 mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+              <span className="text-xs font-mono font-bold tracking-widest text-amber-800 uppercase">
                 Studio Accreditations
               </span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6">
               Engineering Excellence for the World&apos;s Most Exclusive Machines
             </h2>
 
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-8">
               We do not treat supercars like everyday commuters. Every project is assigned to a certified master installer, documented under calibrated cleanroom lighting, and verified against factory paint thickness baselines.
             </p>
 
@@ -106,13 +106,13 @@ export const AegisMilestones: React.FC = () => {
               {pillars.map((pil, idx) => (
                 <div
                   key={idx}
-                  className="p-4 rounded-xl bg-[#0F172A] border border-white/[0.06] hover:border-amber-500/30 transition-colors"
+                  className="p-4 rounded-xl bg-[#F8FAFC] border border-slate-200 hover:border-amber-400 transition-colors"
                 >
                   <div className="flex items-center gap-2 mb-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
-                    <h3 className="text-sm font-bold text-white">{pil.title}</h3>
+                    <CheckCircle2 className="w-4 h-4 text-amber-600 shrink-0" />
+                    <h3 className="text-sm font-bold text-slate-900">{pil.title}</h3>
                   </div>
-                  <p className="text-xs text-slate-400 leading-relaxed pl-6">
+                  <p className="text-xs text-slate-600 leading-relaxed pl-6">
                     {pil.desc}
                   </p>
                 </div>
@@ -122,19 +122,19 @@ export const AegisMilestones: React.FC = () => {
         </div>
 
         {/* Bottom 5 Animated Stats Counters */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 pt-10 border-t border-slate-800">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 pt-10 border-t border-slate-200">
           {stats.map((st, idx) => (
             <div
               key={idx}
-              className="p-5 rounded-2xl bg-[#0F172A] border border-white/[0.06] text-center flex flex-col justify-center"
+              className="p-5 rounded-2xl bg-[#F8FAFC] border border-slate-200 text-center flex flex-col justify-center shadow-sm"
             >
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-amber-400 font-mono tracking-tight mb-1">
+              <div className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-amber-700 font-mono tracking-tight mb-1">
                 {st.value}
               </div>
-              <div className="text-xs sm:text-sm font-bold text-white mb-1">
+              <div className="text-xs sm:text-sm font-bold text-slate-900 mb-1">
                 {st.label}
               </div>
-              <div className="text-[11px] text-slate-400 leading-snug">
+              <div className="text-[11px] text-slate-500 leading-snug">
                 {st.sub}
               </div>
             </div>

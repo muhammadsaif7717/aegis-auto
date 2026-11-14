@@ -98,12 +98,12 @@ export const AegisHeroSlider: React.FC<AegisHeroSliderProps> = ({ onOpenBooking 
   return (
     <section
       id="hero"
-      className="relative min-h-[92vh] sm:min-h-screen flex items-center justify-center pt-24 sm:pt-28 pb-16 overflow-hidden bg-[#070A0F]"
+      className="relative min-h-[92vh] sm:min-h-screen flex items-center justify-center pt-24 sm:pt-28 pb-16 overflow-hidden bg-[#F8FAFC]"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       aria-label="Aegis Auto Hero Showcase"
     >
-      {/* Background Slides with Crossfade */}
+      {/* Background Slides with Light Studio Vignette */}
       <div className="absolute inset-0 z-0">
         {HERO_SLIDES.map((s, idx) => (
           <div
@@ -117,14 +117,12 @@ export const AegisHeroSlider: React.FC<AegisHeroSliderProps> = ({ onOpenBooking 
               alt={s.imageAlt}
               fill
               priority={idx === 0}
-              className="object-cover object-center filter brightness-[0.42] scale-105 transition-transform duration-10000 ease-linear"
+              className="object-cover object-center filter brightness-[0.78] contrast-105 scale-105 transition-transform duration-10000 ease-linear"
               sizes="100vw"
             />
-            {/* Cinematic Gradient Overlays */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F17] via-[#0B0F17]/60 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#070A0F]/90 via-[#070A0F]/60 to-transparent" />
-            {/* Fine Studio Vignette */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#070A0F_90%)] opacity-80" />
+            {/* Pristine Light Studio Gradient Overlays */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#F8FAFC] via-[#F8FAFC]/75 to-[#F8FAFC]/30" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#F8FAFC]/95 via-[#F8FAFC]/70 to-transparent" />
           </div>
         ))}
       </div>
@@ -133,23 +131,23 @@ export const AegisHeroSlider: React.FC<AegisHeroSliderProps> = ({ onOpenBooking 
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12 flex flex-col justify-center">
         <div className="max-w-3xl">
           {/* Top Atelier Category Pill */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/80 border border-amber-500/30 backdrop-blur-md mb-6 shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-amber-400 shadow-[0_0_8px_#F59E0B]" />
-            <span className="text-xs font-mono font-bold tracking-wider text-amber-400 uppercase">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 border border-amber-600/30 backdrop-blur-md mb-6 shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-amber-500 shadow-[0_0_6px_#D97706]" />
+            <span className="text-xs font-mono font-bold tracking-wider text-amber-800 uppercase">
               {slide.tagline}
             </span>
           </div>
 
           {/* Grand Headline */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.06] mb-6">
-            <span className="block drop-shadow-md">{slide.headlineMain}</span>
-            <span className="block bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 bg-clip-text text-transparent drop-shadow-sm">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-tight leading-[1.06] mb-6">
+            <span className="block drop-shadow-sm">{slide.headlineMain}</span>
+            <span className="block bg-gradient-to-r from-amber-600 via-amber-500 to-amber-700 bg-clip-text text-transparent">
               {slide.headlineSub}
             </span>
           </h1>
 
           {/* Descriptive Body */}
-          <p className="text-slate-300 text-base sm:text-lg lg:text-xl font-normal leading-relaxed mb-8 max-w-2xl">
+          <p className="text-slate-700 text-base sm:text-lg lg:text-xl font-normal leading-relaxed mb-8 max-w-2xl">
             {slide.description}
           </p>
 
@@ -157,7 +155,7 @@ export const AegisHeroSlider: React.FC<AegisHeroSliderProps> = ({ onOpenBooking 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-10">
             <button
               onClick={onOpenBooking}
-              className="px-7 py-4 rounded-xl bg-gradient-to-r from-amber-500 via-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-sm sm:text-base tracking-wide transition-all shadow-[0_0_28px_rgba(245,158,11,0.35)] hover:shadow-[0_0_36px_rgba(245,158,11,0.5)] flex items-center justify-center gap-2.5 active:scale-98 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+              className="px-7 py-4 rounded-xl bg-gradient-to-r from-amber-500 via-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-sm sm:text-base tracking-wide transition-all shadow-[0_4px_18px_rgba(217,119,6,0.3)] hover:shadow-[0_6px_24px_rgba(217,119,6,0.45)] flex items-center justify-center gap-2.5 active:scale-98 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
             >
               <Sparkles className="w-4 h-4 text-slate-950" />
               <span>Book Studio Bench</span>
@@ -166,46 +164,46 @@ export const AegisHeroSlider: React.FC<AegisHeroSliderProps> = ({ onOpenBooking 
             <a
               href="#configurator"
               onClick={handleConfiguratorScroll}
-              className="px-7 py-4 rounded-xl bg-slate-900/80 hover:bg-slate-850/90 text-white font-semibold text-sm sm:text-base tracking-wide border border-slate-700/80 hover:border-amber-500/50 backdrop-blur-md transition-all flex items-center justify-center gap-2.5 active:scale-98 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 shadow-lg"
+              className="px-7 py-4 rounded-xl bg-white hover:bg-slate-50 text-slate-900 font-semibold text-sm sm:text-base tracking-wide border border-slate-300 hover:border-amber-500/60 backdrop-blur-md transition-all flex items-center justify-center gap-2.5 active:scale-98 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 shadow-sm"
             >
-              <Calculator className="w-4 h-4 text-amber-400" />
+              <Calculator className="w-4 h-4 text-amber-600" />
               <span>Vehicle Price Configurator</span>
             </a>
           </div>
 
           {/* Active Featured Vehicle Tag */}
-          <div className="flex flex-wrap items-center gap-3 text-xs text-slate-400 pt-2 border-t border-white/[0.08]">
+          <div className="flex flex-wrap items-center gap-3 text-xs text-slate-600 pt-2 border-t border-slate-300/80">
             <span className="text-slate-500 uppercase font-mono tracking-wider">Featured Vehicle:</span>
-            <span className="font-semibold text-slate-200">{slide.carModel}</span>
-            <span className="text-slate-600">•</span>
-            <span className="text-amber-400/90 font-medium">{slide.specPill}</span>
-            <span className="text-slate-600 hidden sm:inline">•</span>
-            <span className="text-emerald-400 font-mono hidden sm:inline">{slide.finishBadge}</span>
+            <span className="font-bold text-slate-900">{slide.carModel}</span>
+            <span className="text-slate-400">•</span>
+            <span className="text-amber-800 font-semibold">{slide.specPill}</span>
+            <span className="text-slate-400 hidden sm:inline">•</span>
+            <span className="text-emerald-700 font-mono font-bold hidden sm:inline">{slide.finishBadge}</span>
           </div>
         </div>
       </div>
 
-      {/* Trust Pill Strip (Floating Minimalist Footer) */}
+      {/* Trust Pill Strip (Floating Minimalist Light Card) */}
       <div className="absolute bottom-4 left-0 right-0 z-20 px-4">
-        <div className="max-w-5xl mx-auto py-2.5 px-4 sm:px-6 rounded-2xl bg-[#0B0F17]/85 border border-white/[0.08] backdrop-blur-xl shadow-xl flex flex-wrap items-center justify-around gap-3 text-xs sm:text-sm text-slate-300">
+        <div className="max-w-5xl mx-auto py-2.5 px-4 sm:px-6 rounded-2xl bg-white/95 border border-slate-200/90 backdrop-blur-xl shadow-lg flex flex-wrap items-center justify-around gap-3 text-xs sm:text-sm text-slate-700">
           <div className="flex items-center gap-2">
-            <Shield className="w-4 h-4 text-amber-400 shrink-0" />
-            <span className="font-semibold text-white">10-Year Film Warranty</span>
+            <Shield className="w-4 h-4 text-amber-600 shrink-0" />
+            <span className="font-bold text-slate-900">10-Year Film Warranty</span>
           </div>
-          <span className="text-slate-700 hidden md:inline">•</span>
+          <span className="text-slate-300 hidden md:inline">•</span>
           <div className="flex items-center gap-2">
-            <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" />
-            <span className="font-semibold text-white">Dust-Free Class-100 Cleanroom</span>
+            <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
+            <span className="font-bold text-slate-900">Dust-Free Class-100 Cleanroom</span>
           </div>
-          <span className="text-slate-700 hidden md:inline">•</span>
+          <span className="text-slate-300 hidden md:inline">•</span>
           <div className="flex items-center gap-2">
-            <Award className="w-4 h-4 text-amber-400 shrink-0" />
-            <span className="font-semibold text-white">Computer-Cut Pre-Cut Kits</span>
+            <Award className="w-4 h-4 text-amber-600 shrink-0" />
+            <span className="font-bold text-slate-900">Computer-Cut Pre-Cut Kits</span>
           </div>
-          <span className="text-slate-700 hidden md:inline">•</span>
+          <span className="text-slate-300 hidden md:inline">•</span>
           <div className="flex items-center gap-2">
-            <Flame className="w-4 h-4 text-amber-400 shrink-0" />
-            <span className="font-semibold text-white">Zero Knife On Factory Paint</span>
+            <Flame className="w-4 h-4 text-amber-600 shrink-0" />
+            <span className="font-bold text-slate-900">Zero Knife On Factory Paint</span>
           </div>
         </div>
       </div>
@@ -218,8 +216,8 @@ export const AegisHeroSlider: React.FC<AegisHeroSliderProps> = ({ onOpenBooking 
             onClick={() => setCurrentSlide(idx)}
             className={`w-2.5 transition-all duration-300 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${
               idx === currentSlide
-                ? "h-8 bg-amber-400 shadow-[0_0_10px_#F59E0B]"
-                : "h-2.5 bg-slate-600/80 hover:bg-slate-400"
+                ? "h-8 bg-amber-600 shadow-[0_0_8px_#D97706]"
+                : "h-2.5 bg-slate-300 hover:bg-slate-400"
             }`}
             aria-label={`Go to slide ${idx + 1}`}
           />
@@ -230,14 +228,14 @@ export const AegisHeroSlider: React.FC<AegisHeroSliderProps> = ({ onOpenBooking 
       <div className="lg:hidden absolute bottom-20 right-4 z-20 flex items-center gap-2">
         <button
           onClick={prevSlide}
-          className="p-2 rounded-xl bg-slate-900/80 border border-slate-700 text-slate-300 hover:text-white"
+          className="p-2 rounded-xl bg-white border border-slate-300 text-slate-700 hover:text-slate-950 shadow-sm"
           aria-label="Previous slide"
         >
           <ChevronLeft className="w-4 h-4" />
         </button>
         <button
           onClick={nextSlide}
-          className="p-2 rounded-xl bg-slate-900/80 border border-slate-700 text-slate-300 hover:text-white"
+          className="p-2 rounded-xl bg-white border border-slate-300 text-slate-700 hover:text-slate-950 shadow-sm"
           aria-label="Next slide"
         >
           <ChevronRight className="w-4 h-4" />

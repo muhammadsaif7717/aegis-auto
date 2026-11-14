@@ -42,25 +42,25 @@ export const AegisWorkflow: React.FC = () => {
   ];
 
   return (
-    <section id="process" className="py-20 sm:py-28 bg-[#070A0F] relative">
+    <section id="process" className="py-20 sm:py-28 bg-[#F8FAFC] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-amber-500/30 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-            <span className="text-xs font-mono font-bold tracking-widest text-amber-400 uppercase">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-amber-300 mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+            <span className="text-xs font-mono font-bold tracking-widest text-amber-800 uppercase">
               Atelier Protocol
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
             The Cleanroom 4-Step <br />
-            <span className="bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-amber-600 to-amber-700 bg-clip-text text-transparent">
               Precision Installation Workflow
             </span>
           </h2>
 
-          <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
+          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
             From surgical exterior decontamination to short-wave infrared edge curing, every phase is engineered with clinical rigor to guarantee invisible protection.
           </p>
         </div>
@@ -72,34 +72,34 @@ export const AegisWorkflow: React.FC = () => {
             return (
               <div
                 key={idx}
-                className="relative group p-6 sm:p-7 rounded-2xl bg-[#0F172A] border border-white/[0.08] hover:border-amber-500/40 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_10px_35px_rgba(245,158,11,0.1)]"
+                className="relative group p-6 sm:p-7 rounded-2xl bg-white border border-slate-200/90 hover:border-amber-400 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_10px_30px_rgba(217,119,6,0.1)] shadow-sm"
               >
                 <div>
                   {/* Step Top Row */}
                   <div className="flex items-center justify-between mb-5">
-                    <span className="text-3xl font-extrabold font-mono text-slate-700 group-hover:text-amber-500/40 transition-colors">
+                    <span className="text-3xl font-extrabold font-mono text-slate-300 group-hover:text-amber-500/50 transition-colors">
                       {st.number}
                     </span>
-                    <div className="w-11 h-11 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-amber-400 group-hover:scale-105 transition-transform">
+                    <div className="w-11 h-11 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-700 group-hover:scale-105 transition-transform">
                       <Icon className="w-5 h-5" />
                     </div>
                   </div>
 
-                  <span className="text-[11px] font-mono font-semibold text-amber-400 block mb-2">
+                  <span className="text-[11px] font-mono font-bold text-amber-800 block mb-2">
                     {st.timeline}
                   </span>
 
-                  <h3 className="text-base font-bold text-white mb-3 leading-snug group-hover:text-amber-300 transition-colors">
+                  <h3 className="text-base font-bold text-slate-900 mb-3 leading-snug group-hover:text-amber-800 transition-colors">
                     {st.title}
                   </h3>
 
-                  <p className="text-xs text-slate-300 leading-relaxed mb-5">
+                  <p className="text-xs text-slate-600 leading-relaxed mb-5">
                     {st.description}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-slate-800 text-[11px] font-mono text-emerald-400 bg-slate-900/60 p-2.5 rounded-lg border border-white/[0.04]">
-                  <span className="text-slate-400 block text-[10px] uppercase">QC Standard:</span>
+                <div className="pt-3 border-t border-slate-200 text-[11px] font-mono text-emerald-800 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                  <span className="text-slate-500 block text-[10px] uppercase font-bold">QC Standard:</span>
                   {st.technicalPoint}
                 </div>
               </div>

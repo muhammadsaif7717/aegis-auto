@@ -88,7 +88,7 @@ export const AegisQuoteModal: React.FC<AegisQuoteModalProps> = ({
         particleCount: 80,
         spread: 70,
         origin: { y: 0.6 },
-        colors: ["#F59E0B", "#FBBF24", "#D97706", "#FFFFFF"],
+        colors: ["#F59E0B", "#FBBF24", "#D97706", "#B45309"],
       });
     }, 700);
   };
@@ -100,97 +100,97 @@ export const AegisQuoteModal: React.FC<AegisQuoteModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-slate-950/80 backdrop-blur-md transition-opacity animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-slate-900/50 backdrop-blur-sm transition-opacity animate-in fade-in duration-200"
       role="dialog"
       aria-modal="true"
       aria-labelledby="booking-modal-title"
     >
       <div
-        className="relative w-full max-w-2xl bg-[#0F172A] border border-slate-700/80 rounded-2xl shadow-2xl p-6 sm:p-8 my-8 text-slate-100 max-h-[92vh] overflow-y-auto custom-scrollbar"
+        className="relative w-full max-w-2xl bg-white border border-slate-200 rounded-2xl shadow-2xl p-6 sm:p-8 my-8 text-slate-900 max-h-[92vh] overflow-y-auto custom-scrollbar"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={handleResetAndClose}
-          className="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+          className="absolute top-5 right-5 p-2 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
         </button>
 
         {submittedTicket ? (
-          /* Confirmation State */
+          /* Confirmation State (Light Mode) */
           <div className="text-center py-6">
-            <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-emerald-50 border border-emerald-300 flex items-center justify-center text-emerald-600">
               <CheckCircle2 className="w-10 h-10" />
             </div>
 
-            <span className="inline-block px-3 py-1 text-xs font-mono font-bold tracking-widest text-amber-400 uppercase bg-amber-500/10 border border-amber-500/30 rounded-full mb-3">
+            <span className="inline-block px-3 py-1 text-xs font-mono font-bold tracking-widest text-emerald-800 uppercase bg-emerald-100 border border-emerald-300 rounded-full mb-3">
               Cleanroom Reservation Confirmed
             </span>
 
-            <h3 id="booking-modal-title" className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-2">
+            <h3 id="booking-modal-title" className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-2">
               Studio Bench Reserved
             </h3>
 
-            <p className="text-slate-300 text-sm max-w-md mx-auto mb-6">
-              Thank you, <span className="font-semibold text-white">{formData.fullName || "valued client"}</span>. Our master studio director has received your reservation request for your{" "}
-              <span className="text-amber-400 font-medium">
+            <p className="text-slate-600 text-sm max-w-md mx-auto mb-6">
+              Thank you, <span className="font-bold text-slate-900">{formData.fullName || "valued client"}</span>. Our master studio director has received your reservation request for your{" "}
+              <span className="text-amber-800 font-bold">
                 {formData.vehicleYear} {formData.vehicleMake} {formData.vehicleModel}
               </span>.
             </p>
 
             {/* Build Ticket Badge */}
-            <div className="bg-[#0B0F17] border border-slate-700 rounded-xl p-5 mb-6 max-w-sm mx-auto text-left">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-3">
-                <span className="text-xs uppercase text-slate-400 font-mono">Build Ticket ID</span>
-                <span className="text-lg font-mono font-bold text-amber-400 tracking-wider">
+            <div className="bg-slate-50 border border-slate-200 rounded-xl p-5 mb-6 max-w-sm mx-auto text-left shadow-sm">
+              <div className="flex items-center justify-between border-b border-slate-200 pb-3 mb-3">
+                <span className="text-xs uppercase text-slate-500 font-mono font-bold">Build Ticket ID</span>
+                <span className="text-lg font-mono font-extrabold text-amber-700 tracking-wider">
                   {submittedTicket}
                 </span>
               </div>
-              <div className="space-y-1.5 text-xs text-slate-300">
+              <div className="space-y-1.5 text-xs text-slate-700">
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Package:</span>
-                  <span className="font-medium text-slate-200">{formData.packageType}</span>
+                  <span className="text-slate-500">Package:</span>
+                  <span className="font-bold text-slate-900">{formData.packageType}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Finish:</span>
-                  <span className="font-medium text-slate-200">{formData.finish}</span>
+                  <span className="text-slate-500">Finish:</span>
+                  <span className="font-bold text-slate-900">{formData.finish}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Studio Bay:</span>
-                  <span className="font-medium text-emerald-400">Class-100 Cleanroom</span>
+                  <span className="text-slate-500">Studio Bay:</span>
+                  <span className="font-bold text-emerald-700">Class-100 Cleanroom</span>
                 </div>
               </div>
             </div>
 
-            <p className="text-xs text-slate-400 mb-6">
+            <p className="text-xs text-slate-500 mb-6">
               A verification SMS and cleanroom intake protocol document have been sent to{" "}
-              <span className="text-slate-200">{formData.phone || "your phone"}</span> and{" "}
-              <span className="text-slate-200">{formData.email || "your email"}</span>.
+              <span className="text-slate-900 font-medium">{formData.phone || "your phone"}</span> and{" "}
+              <span className="text-slate-900 font-medium">{formData.email || "your email"}</span>.
             </p>
 
             <button
               onClick={handleResetAndClose}
-              className="w-full sm:w-auto px-8 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-bold text-sm tracking-wide hover:from-amber-400 hover:to-amber-500 transition-all shadow-[0_0_20px_rgba(245,158,11,0.25)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 active:scale-98"
+              className="w-full sm:w-auto px-8 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-bold text-sm tracking-wide hover:from-amber-400 hover:to-amber-500 transition-all shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 active:scale-98"
             >
               Done & Return to Studio
             </button>
           </div>
         ) : (
-          /* Intake Form */
+          /* Intake Form (Light Mode) */
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <Shield className="w-5 h-5 text-amber-400" />
-              <span className="text-xs font-mono font-bold tracking-widest text-amber-400 uppercase">
+              <Shield className="w-5 h-5 text-amber-600" />
+              <span className="text-xs font-mono font-bold tracking-widest text-amber-800 uppercase">
                 Cleanroom Bench Reservation
               </span>
             </div>
 
-            <h3 id="booking-modal-title" className="text-2xl font-extrabold text-white tracking-tight mb-1">
+            <h3 id="booking-modal-title" className="text-2xl font-extrabold text-slate-900 tracking-tight mb-1">
               Book Studio Slot & Estimate
             </h3>
-            <p className="text-slate-400 text-xs sm:text-sm mb-6">
+            <p className="text-slate-600 text-xs sm:text-sm mb-6">
               Reserve your vehicle’s dedicated cleanroom bay with our certified master installers.
             </p>
 
@@ -198,7 +198,7 @@ export const AegisQuoteModal: React.FC<AegisQuoteModalProps> = ({
               {/* Vehicle Row */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
                     Year *
                   </label>
                   <input
@@ -206,12 +206,12 @@ export const AegisQuoteModal: React.FC<AegisQuoteModalProps> = ({
                     required
                     value={formData.vehicleYear}
                     onChange={(e) => setFormData({ ...formData, vehicleYear: e.target.value })}
-                    className="w-full bg-[#0B0F17] border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:border-amber-500 focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none focus:bg-white"
                     placeholder="2025"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
                     Make *
                   </label>
                   <input
@@ -219,12 +219,12 @@ export const AegisQuoteModal: React.FC<AegisQuoteModalProps> = ({
                     required
                     value={formData.vehicleMake}
                     onChange={(e) => setFormData({ ...formData, vehicleMake: e.target.value })}
-                    className="w-full bg-[#0B0F17] border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:border-amber-500 focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none focus:bg-white"
                     placeholder="Porsche"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
                     Model *
                   </label>
                   <input
@@ -232,7 +232,7 @@ export const AegisQuoteModal: React.FC<AegisQuoteModalProps> = ({
                     required
                     value={formData.vehicleModel}
                     onChange={(e) => setFormData({ ...formData, vehicleModel: e.target.value })}
-                    className="w-full bg-[#0B0F17] border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:border-amber-500 focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none focus:bg-white"
                     placeholder="911 GT3 RS"
                   />
                 </div>
@@ -241,13 +241,13 @@ export const AegisQuoteModal: React.FC<AegisQuoteModalProps> = ({
               {/* Package & Finish */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
                     Protection Package *
                   </label>
                   <select
                     value={formData.packageType}
                     onChange={(e) => setFormData({ ...formData, packageType: e.target.value })}
-                    className="w-full bg-[#0B0F17] border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:border-amber-500 focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none focus:bg-white"
                   >
                     <option value="Full Body Stealth PPF">Full Body Stealth PPF ($4,899+)</option>
                     <option value="Front Track Pack PPF">Front Track Pack PPF ($1,899+)</option>
@@ -258,13 +258,13 @@ export const AegisQuoteModal: React.FC<AegisQuoteModalProps> = ({
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
                     Finish / Material *
                   </label>
                   <select
                     value={formData.finish}
                     onChange={(e) => setFormData({ ...formData, finish: e.target.value })}
-                    className="w-full bg-[#0B0F17] border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:border-amber-500 focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none focus:bg-white"
                   >
                     <option value="Stealth Satin Matte">Stealth Satin Matte (Self-Healing)</option>
                     <option value="Ultra-Gloss Optical Clear">Ultra-Gloss Optical Clear (10 Mil)</option>
@@ -278,27 +278,25 @@ export const AegisQuoteModal: React.FC<AegisQuoteModalProps> = ({
               {/* Date & Time */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
                     Preferred Studio Date *
                   </label>
-                  <div className="relative">
-                    <input
-                      type="date"
-                      required
-                      value={formData.date}
-                      onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                      className="w-full bg-[#0B0F17] border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:border-amber-500 focus:outline-none [color-scheme:dark]"
-                    />
-                  </div>
+                  <input
+                    type="date"
+                    required
+                    value={formData.date}
+                    onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none focus:bg-white"
+                  />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
                     Intake Time Window *
                   </label>
                   <select
                     value={formData.timeSlot}
                     onChange={(e) => setFormData({ ...formData, timeSlot: e.target.value })}
-                    className="w-full bg-[#0B0F17] border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:border-amber-500 focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none focus:bg-white"
                   >
                     <option value="08:30 AM (Cleanroom Morning Slot)">08:30 AM (Early Intake Slot)</option>
                     <option value="11:00 AM (Mid-Day Bench Slot)">11:00 AM (Mid-Day Bench Slot)</option>
@@ -311,7 +309,7 @@ export const AegisQuoteModal: React.FC<AegisQuoteModalProps> = ({
               {/* Client Info */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
                     Full Name *
                   </label>
                   <input
@@ -319,12 +317,12 @@ export const AegisQuoteModal: React.FC<AegisQuoteModalProps> = ({
                     required
                     value={formData.fullName}
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                    className="w-full bg-[#0B0F17] border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:border-amber-500 focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none focus:bg-white"
                     placeholder="Marcus Sterling"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
                     Email Address *
                   </label>
                   <input
@@ -332,12 +330,12 @@ export const AegisQuoteModal: React.FC<AegisQuoteModalProps> = ({
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full bg-[#0B0F17] border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:border-amber-500 focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none focus:bg-white"
                     placeholder="marcus@example.com"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
                     Phone / Mobile *
                   </label>
                   <input
@@ -345,7 +343,7 @@ export const AegisQuoteModal: React.FC<AegisQuoteModalProps> = ({
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full bg-[#0B0F17] border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:border-amber-500 focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none focus:bg-white"
                     placeholder="+1 (212) 555-0198"
                   />
                 </div>
@@ -353,14 +351,14 @@ export const AegisQuoteModal: React.FC<AegisQuoteModalProps> = ({
 
               {/* Special Notes */}
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1">
+                <label className="block text-xs font-bold text-slate-700 mb-1">
                   Bespoke Notes or Custom Request (Optional)
                 </label>
                 <textarea
                   rows={2}
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                  className="w-full bg-[#0B0F17] border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:border-amber-500 focus:outline-none"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none focus:bg-white"
                   placeholder="e.g. Extended edge wrapping on carbon aero fenders, ceramic coat brake calipers..."
                 />
               </div>
@@ -370,7 +368,7 @@ export const AegisQuoteModal: React.FC<AegisQuoteModalProps> = ({
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-amber-500 via-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-sm tracking-wide transition-all shadow-[0_0_24px_rgba(245,158,11,0.25)] disabled:opacity-50 flex items-center justify-center gap-2 active:scale-98 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+                  className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-amber-500 via-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-sm tracking-wide transition-all shadow-[0_2px_14px_rgba(217,119,6,0.3)] disabled:opacity-50 flex items-center justify-center gap-2 active:scale-98 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
                 >
                   {isSubmitting ? (
                     <div className="w-5 h-5 border-2 border-slate-950 border-t-transparent rounded-full animate-spin" />
@@ -381,7 +379,7 @@ export const AegisQuoteModal: React.FC<AegisQuoteModalProps> = ({
                     </>
                   )}
                 </button>
-                <p className="text-center text-[11px] text-slate-400 mt-2">
+                <p className="text-center text-[11px] text-slate-500 mt-2 font-medium">
                   No commitment required today. Our atelier manager will call to confirm panel clearance and vehicle logistics.
                 </p>
               </div>

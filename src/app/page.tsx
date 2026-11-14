@@ -45,7 +45,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#0B0F17] text-[#F8FAFC] flex flex-col overflow-x-hidden w-full selection:bg-amber-500/30 selection:text-white">
+    <div className="relative min-h-screen bg-[#F8FAFC] text-[#0F172A] flex flex-col overflow-x-hidden w-full selection:bg-amber-500/20 selection:text-slate-900">
       {/* 1. Header & Navigation */}
       <AegisNavbar
         onOpenBooking={() => handleOpenBooking()}

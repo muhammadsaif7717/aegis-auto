@@ -85,17 +85,17 @@ export const AegisNavbar: React.FC<AegisNavbarProps> = ({
 
   return (
     <header className="fixed top-0 left-0 right-0 z-40 w-full transition-all duration-300">
-      {/* 1. Top Utility Strip */}
-      <div className="bg-[#070A0F] border-b border-white/[0.06] text-xs text-slate-300 hidden md:block select-none">
+      {/* 1. Top Utility Strip (Cleanroom Light Slate) */}
+      <div className="bg-slate-100/90 border-b border-slate-200/80 text-xs text-slate-700 hidden md:block select-none backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-9 flex items-center justify-between">
           {/* Left Info */}
           <div className="flex items-center gap-6">
-            <div className="flex items-center gap-1.5 text-slate-300">
-              <Clock className="w-3.5 h-3.5 text-amber-400" />
+            <div className="flex items-center gap-1.5 text-slate-700">
+              <Clock className="w-3.5 h-3.5 text-amber-600" />
               <span>Mon–Sat: 8:00 AM – 7:00 PM</span>
             </div>
-            <div className="flex items-center gap-1.5 text-slate-300">
-              <MapPin className="w-3.5 h-3.5 text-amber-400" />
+            <div className="flex items-center gap-1.5 text-slate-700">
+              <MapPin className="w-3.5 h-3.5 text-amber-600" />
               <span>Manhattan Cleanroom Facility • 25 Main St</span>
             </div>
           </div>
@@ -104,20 +104,20 @@ export const AegisNavbar: React.FC<AegisNavbarProps> = ({
           <div className="flex items-center gap-5">
             <a
               href="tel:+18005899727"
-              className="flex items-center gap-1.5 font-mono text-amber-400 hover:text-amber-300 transition-colors font-medium"
+              className="flex items-center gap-1.5 font-mono text-amber-700 hover:text-amber-800 transition-colors font-semibold"
             >
-              <Phone className="w-3.5 h-3.5" />
+              <Phone className="w-3.5 h-3.5 text-amber-600" />
               <span>+1 (800) 589-WRAP</span>
             </a>
 
-            <div className="h-3 w-px bg-slate-800" />
+            <div className="h-3 w-px bg-slate-300" />
 
             <div className="flex items-center gap-3">
               <a
                 href="https://instagram.com"
                 target="_blank"
                 rel="noreferrer"
-                className="text-slate-400 hover:text-amber-400 transition-colors"
+                className="text-slate-500 hover:text-amber-600 transition-colors"
                 aria-label="Aegis Auto Instagram"
               >
                 <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -128,7 +128,7 @@ export const AegisNavbar: React.FC<AegisNavbarProps> = ({
                 href="https://youtube.com"
                 target="_blank"
                 rel="noreferrer"
-                className="text-slate-400 hover:text-amber-400 transition-colors"
+                className="text-slate-500 hover:text-amber-600 transition-colors"
                 aria-label="Aegis Auto YouTube"
               >
                 <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -140,12 +140,12 @@ export const AegisNavbar: React.FC<AegisNavbarProps> = ({
         </div>
       </div>
 
-      {/* 2. Main Frosted Glass Navbar */}
+      {/* 2. Main Pristine White Frosted Glass Navbar */}
       <nav
         className={`w-full transition-all duration-300 ${
           isScrolled
-            ? "bg-[#0B0F17]/90 backdrop-blur-xl border-b border-white/[0.08] shadow-2xl py-3.5"
-            : "bg-[#0B0F17]/60 backdrop-blur-md border-b border-white/[0.05] py-4"
+            ? "bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-sm py-3.5"
+            : "bg-white/80 backdrop-blur-md border-b border-slate-200/60 py-4"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -163,13 +163,13 @@ export const AegisNavbar: React.FC<AegisNavbarProps> = ({
                     onClick={(e) => handleNavClick(e, link.href)}
                     className={`px-3 py-1.5 text-xs font-semibold tracking-wide transition-all rounded-lg relative ${
                       isActive
-                        ? "text-amber-400"
-                        : "text-slate-300 hover:text-white hover:bg-white/[0.04]"
+                        ? "text-amber-700 font-bold bg-amber-50"
+                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
                     }`}
                   >
                     {link.label}
                     {isActive && (
-                      <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-gradient-to-r from-amber-400 to-amber-600 rounded-full shadow-[0_0_8px_rgba(245,158,11,0.8)]" />
+                      <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-gradient-to-r from-amber-500 to-amber-700 rounded-full shadow-[0_0_6px_rgba(217,119,6,0.6)]" />
                     )}
                   </a>
                 </li>
@@ -182,16 +182,16 @@ export const AegisNavbar: React.FC<AegisNavbarProps> = ({
             {/* Track Build Button */}
             <button
               onClick={onOpenTracker}
-              className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-300 bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 hover:border-slate-600 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 active:scale-98"
+              className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-300/80 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 active:scale-98"
             >
-              <Search className="w-3.5 h-3.5 text-amber-400" />
+              <Search className="w-3.5 h-3.5 text-amber-600" />
               <span>Track Build</span>
             </button>
 
             {/* Book Studio Slot CTA */}
             <button
               onClick={onOpenBooking}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-slate-950 bg-gradient-to-r from-amber-500 via-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 transition-all shadow-[0_0_20px_rgba(245,158,11,0.25)] hover:shadow-[0_0_28px_rgba(245,158,11,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 active:scale-98"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-slate-950 bg-gradient-to-r from-amber-500 via-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 transition-all shadow-[0_2px_12px_rgba(217,119,6,0.3)] hover:shadow-[0_4px_18px_rgba(217,119,6,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 active:scale-98"
             >
               <Sparkles className="w-3.5 h-3.5 text-slate-950" />
               <span>Book Studio Slot</span>
@@ -202,15 +202,15 @@ export const AegisNavbar: React.FC<AegisNavbarProps> = ({
           <div className="flex items-center gap-2 xl:hidden">
             <button
               onClick={onOpenTracker}
-              className="sm:hidden p-2 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition-colors"
+              className="sm:hidden p-2 rounded-lg text-slate-700 hover:text-amber-700 hover:bg-slate-100 transition-colors"
               aria-label="Track build"
             >
-              <Search className="w-4 h-4 text-amber-400" />
+              <Search className="w-4 h-4 text-amber-600" />
             </button>
 
             <button
               onClick={() => setMobileMenuOpen(true)}
-              className="p-2 rounded-xl bg-slate-800/80 border border-slate-700 text-slate-200 hover:text-white hover:bg-slate-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+              className="p-2 rounded-xl bg-slate-100 border border-slate-300 text-slate-800 hover:text-slate-950 hover:bg-slate-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
               aria-label="Open mobile navigation menu"
             >
               <Menu className="w-5 h-5" />
@@ -219,23 +219,23 @@ export const AegisNavbar: React.FC<AegisNavbarProps> = ({
         </div>
       </nav>
 
-      {/* 3. Mobile Navigation Drawer */}
+      {/* 3. Mobile Navigation Drawer (Clean White) */}
       {mobileMenuOpen && (
         <div
-          className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md xl:hidden"
+          className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm xl:hidden"
           onClick={() => setMobileMenuOpen(false)}
         >
           <div
-            className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-[#0B0F17] border-l border-slate-800 p-6 flex flex-col justify-between shadow-2xl overflow-y-auto"
+            className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-white border-l border-slate-200 p-6 flex flex-col justify-between shadow-2xl overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div>
               {/* Drawer Top */}
-              <div className="flex items-center justify-between pb-4 border-b border-slate-800 mb-6">
+              <div className="flex items-center justify-between pb-4 border-b border-slate-200 mb-6">
                 <AegisLogo size="sm" />
                 <button
                   onClick={() => setMobileMenuOpen(false)}
-                  className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+                  className="p-2 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors"
                   aria-label="Close navigation menu"
                 >
                   <X className="w-5 h-5" />
@@ -253,27 +253,27 @@ export const AegisNavbar: React.FC<AegisNavbarProps> = ({
                       onClick={(e) => handleNavClick(e, link.href)}
                       className={`flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
                         isActive
-                          ? "bg-amber-500/10 text-amber-400 border border-amber-500/30"
-                          : "text-slate-300 hover:bg-slate-800/60 hover:text-white"
+                          ? "bg-amber-50 text-amber-700 border border-amber-200"
+                          : "text-slate-700 hover:bg-slate-100 hover:text-slate-950"
                       }`}
                     >
                       <span>{link.label}</span>
-                      <ChevronRight className="w-4 h-4 opacity-50" />
+                      <ChevronRight className="w-4 h-4 text-slate-400" />
                     </a>
                   );
                 })}
               </nav>
 
               {/* Action Cluster in Drawer */}
-              <div className="mt-6 pt-6 border-t border-slate-800 space-y-3">
+              <div className="mt-6 pt-6 border-t border-slate-200 space-y-3">
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);
                     onOpenTracker();
                   }}
-                  className="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-slate-200 bg-slate-800 hover:bg-slate-750 border border-slate-700 flex items-center justify-center gap-2"
+                  className="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-slate-800 bg-slate-100 hover:bg-slate-200 border border-slate-300 flex items-center justify-center gap-2"
                 >
-                  <Search className="w-4 h-4 text-amber-400" />
+                  <Search className="w-4 h-4 text-amber-600" />
                   <span>Track Vehicle Build (Ticket)</span>
                 </button>
 
@@ -282,7 +282,7 @@ export const AegisNavbar: React.FC<AegisNavbarProps> = ({
                     setMobileMenuOpen(false);
                     onOpenBooking();
                   }}
-                  className="w-full py-3 px-4 rounded-xl text-xs font-bold text-slate-950 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(245,158,11,0.25)]"
+                  className="w-full py-3 px-4 rounded-xl text-xs font-bold text-slate-950 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 flex items-center justify-center gap-2 shadow-md"
                 >
                   <Sparkles className="w-4 h-4 text-slate-950" />
                   <span>Book Studio Slot</span>
@@ -291,16 +291,16 @@ export const AegisNavbar: React.FC<AegisNavbarProps> = ({
             </div>
 
             {/* Bottom Contact in Drawer */}
-            <div className="pt-6 border-t border-slate-800 text-xs text-slate-400 space-y-2">
+            <div className="pt-6 border-t border-slate-200 text-xs text-slate-600 space-y-2">
               <a
                 href="tel:+18005899727"
-                className="flex items-center gap-2 text-amber-400 font-mono font-medium"
+                className="flex items-center gap-2 text-amber-700 font-mono font-bold"
               >
-                <Phone className="w-4 h-4" />
+                <Phone className="w-4 h-4 text-amber-600" />
                 <span>+1 (800) 589-WRAP</span>
               </a>
               <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-slate-400" />
+                <MapPin className="w-4 h-4 text-slate-500" />
                 <span>Manhattan Cleanroom • 25 Main St</span>
               </div>
             </div>

@@ -70,19 +70,19 @@ export const AegisTrackerModal: React.FC<AegisTrackerModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-slate-950/80 backdrop-blur-md transition-opacity animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-slate-900/50 backdrop-blur-sm transition-opacity animate-in fade-in duration-200"
       role="dialog"
       aria-modal="true"
       aria-labelledby="tracker-modal-title"
     >
       <div
-        className="relative w-full max-w-2xl bg-[#0F172A] border border-slate-700 rounded-2xl shadow-2xl p-6 sm:p-8 my-8 text-slate-100 max-h-[92vh] overflow-y-auto custom-scrollbar"
+        className="relative w-full max-w-2xl bg-white border border-slate-200 rounded-2xl shadow-2xl p-6 sm:p-8 my-8 text-slate-900 max-h-[92vh] overflow-y-auto custom-scrollbar"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+          className="absolute top-5 right-5 p-2 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
@@ -90,16 +90,16 @@ export const AegisTrackerModal: React.FC<AegisTrackerModalProps> = ({
 
         {/* Modal Header */}
         <div className="flex items-center gap-2 mb-2">
-          <Shield className="w-5 h-5 text-amber-400" />
-          <span className="text-xs font-mono font-bold tracking-widest text-amber-400 uppercase">
+          <Shield className="w-5 h-5 text-amber-600" />
+          <span className="text-xs font-mono font-bold tracking-widest text-amber-800 uppercase">
             Live Atelier Build Portal
           </span>
         </div>
 
-        <h3 id="tracker-modal-title" className="text-2xl font-extrabold text-white tracking-tight mb-2">
+        <h3 id="tracker-modal-title" className="text-2xl font-extrabold text-slate-900 tracking-tight mb-2">
           Track Vehicle Cleanroom Status
         </h3>
-        <p className="text-slate-400 text-xs sm:text-sm mb-6">
+        <p className="text-slate-600 text-xs sm:text-sm mb-6">
           Enter your 7-character Aegis build ticket number to inspect real-time stage progress, cleanroom sensor conditions, and estimated completion.
         </p>
 
@@ -112,12 +112,12 @@ export const AegisTrackerModal: React.FC<AegisTrackerModalProps> = ({
                 value={searchTicket}
                 onChange={(e) => setSearchTicket(e.target.value.toUpperCase())}
                 placeholder="e.g. AEG-7842"
-                className="w-full bg-[#0B0F17] border border-slate-700 rounded-xl px-4 py-2.5 text-sm font-mono tracking-wider text-white uppercase focus:border-amber-500 focus:outline-none placeholder:text-slate-500 placeholder:normal-case"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm font-mono tracking-wider text-slate-900 uppercase focus:border-amber-500 focus:outline-none focus:bg-white placeholder:text-slate-400 placeholder:normal-case font-bold"
               />
             </div>
             <button
               type="submit"
-              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-sm tracking-wide transition-all shadow-[0_0_15px_rgba(245,158,11,0.2)] active:scale-98 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-sm tracking-wide transition-all shadow-sm active:scale-98 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
             >
               <Search className="w-4 h-4" />
               <span>Track</span>
@@ -127,16 +127,16 @@ export const AegisTrackerModal: React.FC<AegisTrackerModalProps> = ({
 
         {/* Quick Sample Tickets */}
         <div className="flex flex-wrap items-center gap-2 mb-6">
-          <span className="text-xs text-slate-400">Sample Active Builds:</span>
+          <span className="text-xs text-slate-500 font-medium">Sample Active Builds:</span>
           {Object.keys(INITIAL_TRACK_BUILDS).map((tId) => (
             <button
               key={tId}
               type="button"
               onClick={() => handleQuickSelect(tId)}
-              className={`text-xs font-mono px-2.5 py-1 rounded-md border transition-all ${
+              className={`text-xs font-mono font-bold px-2.5 py-1 rounded-md border transition-all ${
                 searchTicket === tId
-                  ? "bg-amber-500/20 border-amber-500 text-amber-300"
-                  : "bg-slate-800/80 border-slate-700 text-slate-300 hover:border-slate-500"
+                  ? "bg-amber-100 border-amber-400 text-amber-900"
+                  : "bg-slate-100 border-slate-200 text-slate-700 hover:border-slate-300"
               }`}
             >
               {tId}
@@ -145,62 +145,62 @@ export const AegisTrackerModal: React.FC<AegisTrackerModalProps> = ({
         </div>
 
         {notFound ? (
-          <div className="p-6 rounded-xl bg-rose-500/10 border border-rose-500/30 text-center">
-            <AlertCircle className="w-8 h-8 text-rose-400 mx-auto mb-2" />
-            <h4 className="text-base font-bold text-white mb-1">Ticket Not Found</h4>
-            <p className="text-xs text-slate-300 mb-3">
+          <div className="p-6 rounded-xl bg-rose-50 border border-rose-200 text-center">
+            <AlertCircle className="w-8 h-8 text-rose-600 mx-auto mb-2" />
+            <h4 className="text-base font-bold text-slate-900 mb-1">Ticket Not Found</h4>
+            <p className="text-xs text-slate-600 mb-3">
               We could not find active cleanroom records for &ldquo;{searchTicket}&rdquo;. Please verify your booking receipt or contact the studio concierge directly.
             </p>
             <button
               onClick={() => handleQuickSelect("AEG-7842")}
-              className="text-xs text-amber-400 underline hover:text-amber-300"
+              className="text-xs text-amber-700 font-bold underline hover:text-amber-800"
             >
               View demo ticket AEG-7842
             </button>
           </div>
         ) : currentBuild ? (
           <div className="space-y-6">
-            {/* Overview Card */}
-            <div className="p-4 sm:p-5 rounded-xl bg-[#0B0F17] border border-slate-700/80">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3 mb-3">
+            {/* Overview Card (Light Mode) */}
+            <div className="p-4 sm:p-5 rounded-xl bg-[#F8FAFC] border border-slate-200">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-3 mb-3">
                 <div>
-                  <div className="text-xs font-mono text-amber-400 font-bold mb-0.5">
+                  <div className="text-xs font-mono text-amber-800 font-bold mb-0.5">
                     {currentBuild.ticketId} • {currentBuild.clientName}
                   </div>
-                  <h4 className="text-lg sm:text-xl font-extrabold text-white tracking-tight">
+                  <h4 className="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight">
                     {currentBuild.vehicle}
                   </h4>
                 </div>
                 <div className="text-left sm:text-right">
-                  <div className="text-[11px] uppercase tracking-wider text-slate-400">Target Delivery</div>
-                  <div className="text-xs font-bold text-emerald-400 font-mono">
+                  <div className="text-[11px] uppercase tracking-wider text-slate-500 font-bold">Target Delivery</div>
+                  <div className="text-xs font-bold text-emerald-700 font-mono">
                     {currentBuild.completionDate}
                   </div>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700">
                 <div>
-                  <span className="text-slate-400">Service: </span>
-                  <span className="font-semibold text-slate-200">{currentBuild.service}</span>
+                  <span className="text-slate-500">Service: </span>
+                  <span className="font-bold text-slate-900">{currentBuild.service}</span>
                 </div>
                 <div>
-                  <span className="text-slate-400">Cleanroom Bay: </span>
-                  <span className="font-semibold text-slate-200">{currentBuild.cleanroomBay}</span>
+                  <span className="text-slate-500">Cleanroom Bay: </span>
+                  <span className="font-bold text-slate-900">{currentBuild.cleanroomBay}</span>
                 </div>
                 <div>
-                  <span className="text-slate-400">Lead Tech: </span>
-                  <span className="font-semibold text-slate-200">{currentBuild.leadTechnician}</span>
+                  <span className="text-slate-500">Lead Tech: </span>
+                  <span className="font-bold text-slate-900">{currentBuild.leadTechnician}</span>
                 </div>
                 <div>
-                  <span className="text-slate-400">Atmospheric Air: </span>
-                  <span className="font-semibold text-emerald-400">Class-100 HEPA 99.99% Dust Free</span>
+                  <span className="text-slate-500">Atmospheric Air: </span>
+                  <span className="font-bold text-emerald-700">Class-100 HEPA 99.99% Dust Free</span>
                 </div>
               </div>
 
               {currentBuild.notes && (
-                <div className="mt-3 pt-3 border-t border-slate-800 text-xs text-amber-200/90 bg-amber-500/5 p-2.5 rounded-lg border border-amber-500/20">
-                  <span className="font-bold text-amber-400">Technician Log: </span>
+                <div className="mt-3 pt-3 border-t border-slate-200 text-xs text-amber-950 bg-amber-50 p-2.5 rounded-lg border border-amber-200">
+                  <span className="font-bold text-amber-900">Technician Log: </span>
                   {currentBuild.notes}
                 </div>
               )}
@@ -208,7 +208,7 @@ export const AegisTrackerModal: React.FC<AegisTrackerModalProps> = ({
 
             {/* Step-by-Step Progress Timeline */}
             <div>
-              <h5 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-3">
+              <h5 className="text-xs font-mono uppercase tracking-wider text-slate-500 font-bold mb-3">
                 Installation Audit Stages
               </h5>
 
@@ -218,21 +218,21 @@ export const AegisTrackerModal: React.FC<AegisTrackerModalProps> = ({
                     key={st.number}
                     className={`p-3.5 rounded-xl border transition-all flex items-start gap-3 ${
                       st.completed
-                        ? "bg-slate-900/60 border-emerald-500/30"
+                        ? "bg-white border-emerald-300 shadow-sm"
                         : st.number === currentBuild.currentStep
-                        ? "bg-amber-500/10 border-amber-500/40"
-                        : "bg-slate-900/20 border-slate-800 opacity-60"
+                        ? "bg-amber-50/80 border-2 border-amber-400 shadow-sm"
+                        : "bg-slate-50 border-slate-200 opacity-60"
                     }`}
                   >
                     <div className="mt-0.5 shrink-0">
                       {st.completed ? (
-                        <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+                        <CheckCircle2 className="w-5 h-5 text-emerald-600" />
                       ) : st.number === currentBuild.currentStep ? (
-                        <div className="w-5 h-5 rounded-full border-2 border-amber-500 flex items-center justify-center">
-                          <div className="w-2 h-2 rounded-full bg-amber-400" />
+                        <div className="w-5 h-5 rounded-full border-2 border-amber-600 flex items-center justify-center">
+                          <div className="w-2 h-2 rounded-full bg-amber-600" />
                         </div>
                       ) : (
-                        <div className="w-5 h-5 rounded-full border border-slate-700 flex items-center justify-center text-[10px] font-mono text-slate-400">
+                        <div className="w-5 h-5 rounded-full border border-slate-300 flex items-center justify-center text-[10px] font-mono text-slate-500">
                           {st.number}
                         </div>
                       )}
@@ -240,14 +240,14 @@ export const AegisTrackerModal: React.FC<AegisTrackerModalProps> = ({
 
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2">
-                        <span className="text-sm font-bold text-white tracking-tight">
+                        <span className="text-sm font-bold text-slate-900 tracking-tight">
                           Step 0{st.number}: {st.title}
                         </span>
-                        <span className="text-[11px] font-mono text-slate-400 shrink-0">
+                        <span className="text-[11px] font-mono text-slate-500 shrink-0 font-medium">
                           {st.time}
                         </span>
                       </div>
-                      <p className="text-xs text-slate-300 mt-0.5">{st.description}</p>
+                      <p className="text-xs text-slate-600 mt-0.5">{st.description}</p>
                     </div>
                   </div>
                 ))}
@@ -255,11 +255,11 @@ export const AegisTrackerModal: React.FC<AegisTrackerModalProps> = ({
             </div>
 
             {/* Direct Studio Hotline */}
-            <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400 border-t border-slate-800">
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-600 border-t border-slate-200">
               <span>Have technical questions for your installer?</span>
               <a
                 href="tel:+18005899727"
-                className="text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded px-1"
+                className="text-amber-800 hover:text-amber-900 font-bold flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded px-1"
               >
                 Call Concierge: +1 (800) 589-WRAP
               </a>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useId } from "react";
+import React, { useState } from "react";
 import { Calculator, Check, Sparkles, Shield, Clock, Award, ArrowRight } from "lucide-react";
 import { PreloadBookingData } from "./AegisQuoteModal";
 
@@ -161,25 +161,25 @@ export const AegisConfigurator: React.FC<AegisConfiguratorProps> = ({ onReserveS
   };
 
   return (
-    <section id="configurator" className="py-20 sm:py-28 bg-[#0B0F17] relative">
+    <section id="configurator" className="py-20 sm:py-28 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-amber-500/30 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-            <span className="text-xs font-mono font-bold tracking-widest text-amber-400 uppercase">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-amber-300 mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+            <span className="text-xs font-mono font-bold tracking-widest text-amber-800 uppercase">
               Instant Pricing Engine
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
             Full-Width Vehicle <br />
-            <span className="bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-amber-600 to-amber-700 bg-clip-text text-transparent">
               Cost & Studio Days Configurator
             </span>
           </h2>
 
-          <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
+          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
             Select your vehicle profile, desired protection architecture, and topcoat finish to receive an instant, transparent estimate with turn-around time and warranty term.
           </p>
         </div>
@@ -189,10 +189,10 @@ export const AegisConfigurator: React.FC<AegisConfiguratorProps> = ({ onReserveS
           {/* STEP 1: Vehicle Segment */}
           <div>
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-7 h-7 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-400 font-mono font-bold text-xs flex items-center justify-center">
+              <span className="w-7 h-7 rounded-full bg-amber-100 border border-amber-300 text-amber-800 font-mono font-bold text-xs flex items-center justify-center">
                 01
               </span>
-              <h3 className="text-lg font-bold text-white tracking-tight">
+              <h3 className="text-lg font-bold text-slate-900 tracking-tight">
                 Select Vehicle Segment & Dimensions
               </h3>
             </div>
@@ -207,17 +207,17 @@ export const AegisConfigurator: React.FC<AegisConfiguratorProps> = ({ onReserveS
                     onClick={() => setSelectedSegmentId(seg.id)}
                     className={`p-4 rounded-xl border text-left transition-all ${
                       isSelected
-                        ? "bg-amber-500/10 border-amber-500 shadow-[0_0_20px_rgba(245,158,11,0.15)] ring-1 ring-amber-500"
-                        : "bg-[#0F172A] border-slate-800 hover:border-slate-700 text-slate-300"
+                        ? "bg-amber-50 border-2 border-amber-500 shadow-sm ring-1 ring-amber-500"
+                        : "bg-[#F8FAFC] border-slate-200 hover:border-slate-300 text-slate-700"
                     }`}
                   >
                     <div className="flex items-center justify-between mb-2">
-                      <span className={`text-sm font-bold ${isSelected ? "text-amber-400" : "text-white"}`}>
+                      <span className={`text-sm font-bold ${isSelected ? "text-amber-900" : "text-slate-900"}`}>
                         {seg.name}
                       </span>
-                      {isSelected && <Check className="w-4 h-4 text-amber-400" />}
+                      {isSelected && <Check className="w-4 h-4 text-amber-600" />}
                     </div>
-                    <p className="text-[11px] text-slate-400 leading-snug line-clamp-2">
+                    <p className="text-[11px] text-slate-500 leading-snug line-clamp-2">
                       {seg.examples}
                     </p>
                   </button>
@@ -229,10 +229,10 @@ export const AegisConfigurator: React.FC<AegisConfiguratorProps> = ({ onReserveS
           {/* STEP 2: Protection Package */}
           <div>
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-7 h-7 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-400 font-mono font-bold text-xs flex items-center justify-center">
+              <span className="w-7 h-7 rounded-full bg-amber-100 border border-amber-300 text-amber-800 font-mono font-bold text-xs flex items-center justify-center">
                 02
               </span>
-              <h3 className="text-lg font-bold text-white tracking-tight">
+              <h3 className="text-lg font-bold text-slate-900 tracking-tight">
                 Choose Protection & Styling Package
               </h3>
             </div>
@@ -247,35 +247,35 @@ export const AegisConfigurator: React.FC<AegisConfiguratorProps> = ({ onReserveS
                     onClick={() => setSelectedPackageId(pkg.id)}
                     className={`p-5 rounded-xl border text-left transition-all flex flex-col justify-between ${
                       isSelected
-                        ? "bg-amber-500/10 border-amber-500 shadow-[0_0_24px_rgba(245,158,11,0.18)] ring-1 ring-amber-500"
-                        : "bg-[#0F172A] border-slate-800 hover:border-slate-700 text-slate-300"
+                        ? "bg-amber-50 border-2 border-amber-500 shadow-md ring-1 ring-amber-500"
+                        : "bg-[#F8FAFC] border-slate-200 hover:border-slate-300 text-slate-700"
                     }`}
                   >
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold text-amber-400 bg-amber-500/10 border border-amber-500/20">
+                        <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold text-amber-800 bg-amber-100 border border-amber-200">
                           {pkg.tag}
                         </span>
-                        {isSelected && <Check className="w-4 h-4 text-amber-400" />}
+                        {isSelected && <Check className="w-4 h-4 text-amber-600" />}
                       </div>
 
-                      <h4 className={`text-base font-bold mb-1.5 ${isSelected ? "text-amber-400" : "text-white"}`}>
+                      <h4 className={`text-base font-bold mb-1.5 ${isSelected ? "text-amber-900" : "text-slate-900"}`}>
                         {pkg.name}
                       </h4>
 
-                      <p className="text-xs text-slate-400 leading-relaxed mb-4">
+                      <p className="text-xs text-slate-600 leading-relaxed mb-4">
                         {pkg.description}
                       </p>
                     </div>
 
-                    <div className="pt-3 border-t border-slate-800/80 space-y-1 text-xs">
-                      <div className="flex justify-between text-slate-400">
+                    <div className="pt-3 border-t border-slate-200 space-y-1 text-xs">
+                      <div className="flex justify-between text-slate-600">
                         <span>Turnaround:</span>
-                        <span className="font-semibold text-slate-200">{pkg.days}</span>
+                        <span className="font-semibold text-slate-900">{pkg.days}</span>
                       </div>
-                      <div className="flex justify-between text-slate-400">
+                      <div className="flex justify-between text-slate-600">
                         <span>Base Cost:</span>
-                        <span className="font-mono font-bold text-white">${pkg.basePrice.toLocaleString()}</span>
+                        <span className="font-mono font-bold text-slate-900">${pkg.basePrice.toLocaleString()}</span>
                       </div>
                     </div>
                   </button>
@@ -287,10 +287,10 @@ export const AegisConfigurator: React.FC<AegisConfiguratorProps> = ({ onReserveS
           {/* STEP 3: Finish & Material */}
           <div>
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-7 h-7 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-400 font-mono font-bold text-xs flex items-center justify-center">
+              <span className="w-7 h-7 rounded-full bg-amber-100 border border-amber-300 text-amber-800 font-mono font-bold text-xs flex items-center justify-center">
                 03
               </span>
-              <h3 className="text-lg font-bold text-white tracking-tight">
+              <h3 className="text-lg font-bold text-slate-900 tracking-tight">
                 Select Topcoat Finish & Chemical Matrix
               </h3>
             </div>
@@ -305,20 +305,20 @@ export const AegisConfigurator: React.FC<AegisConfiguratorProps> = ({ onReserveS
                     onClick={() => setSelectedFinishId(fin.id)}
                     className={`p-4 rounded-xl border text-left transition-all ${
                       isSelected
-                        ? "bg-amber-500/10 border-amber-500 shadow-[0_0_20px_rgba(245,158,11,0.15)] ring-1 ring-amber-500"
-                        : "bg-[#0F172A] border-slate-800 hover:border-slate-700 text-slate-300"
+                        ? "bg-amber-50 border-2 border-amber-500 shadow-sm ring-1 ring-amber-500"
+                        : "bg-[#F8FAFC] border-slate-200 hover:border-slate-300 text-slate-700"
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1.5">
-                      <span className={`text-sm font-bold ${isSelected ? "text-amber-400" : "text-white"}`}>
+                      <span className={`text-sm font-bold ${isSelected ? "text-amber-900" : "text-slate-900"}`}>
                         {fin.name}
                       </span>
-                      {isSelected && <Check className="w-4 h-4 text-amber-400" />}
+                      {isSelected && <Check className="w-4 h-4 text-amber-600" />}
                     </div>
-                    <p className="text-[11px] text-slate-400 mb-2 leading-relaxed">
+                    <p className="text-[11px] text-slate-600 mb-2 leading-relaxed">
                       {fin.description}
                     </p>
-                    <div className="text-[11px] font-mono text-amber-400/90 font-medium">
+                    <div className="text-[11px] font-mono text-amber-800 font-bold">
                       {fin.surcharge > 0 ? `+ $${fin.surcharge} Material Surcharge` : "Included in Package"}
                     </div>
                   </button>
@@ -328,38 +328,38 @@ export const AegisConfigurator: React.FC<AegisConfiguratorProps> = ({ onReserveS
           </div>
         </div>
 
-        {/* Dynamic Full-Width Result Bar */}
-        <div className="mt-12 p-6 sm:p-8 rounded-2xl bg-[#0F172A] border border-amber-500/40 shadow-[0_10px_40px_rgba(245,158,11,0.15)] flex flex-col lg:flex-row items-center justify-between gap-6">
+        {/* Dynamic Full-Width Result Bar (Light Mode Pristine) */}
+        <div className="mt-12 p-6 sm:p-8 rounded-2xl bg-amber-50/70 border-2 border-amber-400 shadow-lg flex flex-col lg:flex-row items-center justify-between gap-6">
           {/* Left Details */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full lg:w-auto">
             <div>
-              <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 block mb-0.5">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-slate-600 font-bold block mb-0.5">
                 Calculated Estimate
               </span>
               <div className="flex items-baseline gap-1">
-                <span className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-mono">
+                <span className="text-3xl sm:text-4xl font-extrabold text-slate-950 tracking-tight font-mono">
                   ${estimatedPrice.toLocaleString()}
                 </span>
-                <span className="text-xs text-slate-400">All-Inclusive</span>
+                <span className="text-xs text-slate-600 font-medium">All-Inclusive</span>
               </div>
             </div>
 
-            <div className="border-t sm:border-t-0 sm:border-l border-slate-800 pt-3 sm:pt-0 sm:pl-6">
-              <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 block mb-0.5">
+            <div className="border-t sm:border-t-0 sm:border-l border-amber-200/80 pt-3 sm:pt-0 sm:pl-6">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-slate-600 font-bold block mb-0.5">
                 Estimated Cleanroom Time
               </span>
-              <div className="flex items-center gap-1.5 text-slate-200 font-bold text-base sm:text-lg">
-                <Clock className="w-4 h-4 text-amber-400" />
+              <div className="flex items-center gap-1.5 text-slate-900 font-bold text-base sm:text-lg">
+                <Clock className="w-4 h-4 text-amber-600" />
                 <span>{selectedPackage.days}</span>
               </div>
             </div>
 
-            <div className="border-t sm:border-t-0 sm:border-l border-slate-800 pt-3 sm:pt-0 sm:pl-6">
-              <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 block mb-0.5">
+            <div className="border-t sm:border-t-0 sm:border-l border-amber-200/80 pt-3 sm:pt-0 sm:pl-6">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-slate-600 font-bold block mb-0.5">
                 Studio Coverage
               </span>
-              <div className="flex items-center gap-1.5 text-emerald-400 font-mono text-xs sm:text-sm font-semibold">
-                <Award className="w-4 h-4 text-emerald-400 shrink-0" />
+              <div className="flex items-center gap-1.5 text-emerald-700 font-mono text-xs sm:text-sm font-bold">
+                <Award className="w-4 h-4 text-emerald-600 shrink-0" />
                 <span>{selectedPackage.warranty}</span>
               </div>
             </div>
@@ -369,7 +369,7 @@ export const AegisConfigurator: React.FC<AegisConfiguratorProps> = ({ onReserveS
           <div className="w-full lg:w-auto shrink-0">
             <button
               onClick={handleReserve}
-              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-amber-500 via-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-sm sm:text-base tracking-wide transition-all shadow-[0_0_24px_rgba(245,158,11,0.3)] hover:shadow-[0_0_32px_rgba(245,158,11,0.45)] flex items-center justify-center gap-2 active:scale-98 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-amber-500 via-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-sm sm:text-base tracking-wide transition-all shadow-[0_2px_14px_rgba(217,119,6,0.3)] hover:shadow-[0_4px_20px_rgba(217,119,6,0.45)] flex items-center justify-center gap-2 active:scale-98 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
             >
               <Sparkles className="w-4 h-4 text-slate-950" />
               <span>Reserve Studio Slot With This Config</span>

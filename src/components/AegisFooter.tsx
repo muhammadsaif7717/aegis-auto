@@ -17,31 +17,31 @@ export const AegisFooter: React.FC = () => {
   };
 
   return (
-    <footer className="bg-[#070A0F] border-t border-white/[0.08] text-slate-400 text-xs pt-16 pb-24 sm:pb-16 relative">
+    <footer className="bg-slate-100 border-t border-slate-200 text-slate-600 text-xs pt-16 pb-24 sm:pb-16 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-16">
           {/* Col 1 & 2: Brand Info (2 cols) */}
           <div className="lg:col-span-2 space-y-4">
             <AegisLogo size="lg" />
-            <p className="text-slate-300 text-sm leading-relaxed max-w-sm pt-2">
+            <p className="text-slate-600 text-sm leading-relaxed max-w-sm pt-2">
               Aegis Auto is an elite cleanroom automotive styling atelier and paint protection film laboratory. Dedicated exclusively to safeguarding and transforming exotic supercars, hypercars, and vintage collector vehicles.
             </p>
 
-            <div className="space-y-2 pt-2 text-slate-300">
+            <div className="space-y-2 pt-2 text-slate-700">
               <div className="flex items-center gap-2.5">
-                <MapPin className="w-4 h-4 text-amber-400 shrink-0" />
+                <MapPin className="w-4 h-4 text-amber-600 shrink-0" />
                 <span>25 Main Street, New York, NY 11201</span>
               </div>
               <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-amber-400 shrink-0" />
-                <a href="tel:+18005899727" className="hover:text-white font-mono">
+                <Phone className="w-4 h-4 text-amber-600 shrink-0" />
+                <a href="tel:+18005899727" className="hover:text-amber-800 font-mono font-bold">
                   +1 (800) 589-WRAP
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-amber-400 shrink-0" />
-                <a href="mailto:atelier@aegisauto.com" className="hover:text-white">
+                <Mail className="w-4 h-4 text-amber-600 shrink-0" />
+                <a href="mailto:atelier@aegisauto.com" className="hover:text-amber-800 font-medium">
                   atelier@aegisauto.com
                 </a>
               </div>
@@ -53,7 +53,7 @@ export const AegisFooter: React.FC = () => {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noreferrer"
-                className="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-300 hover:text-amber-400 hover:border-amber-500/40 transition-colors"
+                className="w-9 h-9 rounded-xl bg-white border border-slate-300 flex items-center justify-center text-slate-600 hover:text-amber-700 hover:border-amber-400 transition-colors shadow-sm"
                 aria-label="Aegis Instagram"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -64,7 +64,7 @@ export const AegisFooter: React.FC = () => {
                 href="https://youtube.com"
                 target="_blank"
                 rel="noreferrer"
-                className="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-300 hover:text-amber-400 hover:border-amber-500/40 transition-colors"
+                className="w-9 h-9 rounded-xl bg-white border border-slate-300 flex items-center justify-center text-slate-600 hover:text-amber-700 hover:border-amber-400 transition-colors shadow-sm"
                 aria-label="Aegis YouTube"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -76,37 +76,37 @@ export const AegisFooter: React.FC = () => {
 
           {/* Col 3: Atelier Services */}
           <div>
-            <h4 className="text-white font-bold uppercase tracking-wider text-xs font-mono mb-4">
+            <h4 className="text-slate-900 font-extrabold uppercase tracking-wider text-xs font-mono mb-4">
               Atelier Services
             </h4>
             <ul className="space-y-2.5">
               <li>
-                <a href="#services" className="hover:text-amber-400 transition-colors">
+                <a href="#services" className="hover:text-amber-700 transition-colors">
                   Self-Healing PPF (Gloss & Stealth)
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-amber-400 transition-colors">
+                <a href="#services" className="hover:text-amber-700 transition-colors">
                   Bespoke Color Change Cast Wrap
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-amber-400 transition-colors">
+                <a href="#services" className="hover:text-amber-700 transition-colors">
                   Multi-Stage Machine Correction
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-amber-400 transition-colors">
+                <a href="#services" className="hover:text-amber-700 transition-colors">
                   9H Graphene & Ceramic Matrix
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-amber-400 transition-colors">
+                <a href="#services" className="hover:text-amber-700 transition-colors">
                   Nano-Ceramic Window Tint
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-amber-400 transition-colors">
+                <a href="#services" className="hover:text-amber-700 transition-colors">
                   Track Day High-Velocity Defense
                 </a>
               </li>
@@ -115,42 +115,42 @@ export const AegisFooter: React.FC = () => {
 
           {/* Col 4: Quick Links */}
           <div>
-            <h4 className="text-white font-bold uppercase tracking-wider text-xs font-mono mb-4">
+            <h4 className="text-slate-900 font-extrabold uppercase tracking-wider text-xs font-mono mb-4">
               Studio Navigation
             </h4>
             <ul className="space-y-2.5">
               <li>
-                <a href="#studio" className="hover:text-amber-400 transition-colors">
+                <a href="#studio" className="hover:text-amber-700 transition-colors">
                   The Aegis Standard
                 </a>
               </li>
               <li>
-                <a href="#comparison" className="hover:text-amber-400 transition-colors">
+                <a href="#comparison" className="hover:text-amber-700 transition-colors">
                   PPF vs Vinyl Comparison
                 </a>
               </li>
               <li>
-                <a href="#before-after" className="hover:text-amber-400 transition-colors">
+                <a href="#before-after" className="hover:text-amber-700 transition-colors">
                   Optical Before & After
                 </a>
               </li>
               <li>
-                <a href="#configurator" className="hover:text-amber-400 transition-colors">
+                <a href="#configurator" className="hover:text-amber-700 transition-colors">
                   Cost & Days Configurator
                 </a>
               </li>
               <li>
-                <a href="#process" className="hover:text-amber-400 transition-colors">
+                <a href="#process" className="hover:text-amber-700 transition-colors">
                   Cleanroom 4-Step Process
                 </a>
               </li>
               <li>
-                <a href="#reviews" className="hover:text-amber-400 transition-colors">
+                <a href="#reviews" className="hover:text-amber-700 transition-colors">
                   Supercar Owner Reviews
                 </a>
               </li>
               <li>
-                <a href="#journal" className="hover:text-amber-400 transition-colors">
+                <a href="#journal" className="hover:text-amber-700 transition-colors">
                   Technical Care Journal
                 </a>
               </li>
@@ -159,17 +159,17 @@ export const AegisFooter: React.FC = () => {
 
           {/* Col 5: VIP Waitlist & Dispatch */}
           <div>
-            <h4 className="text-white font-bold uppercase tracking-wider text-xs font-mono mb-4">
+            <h4 className="text-slate-900 font-extrabold uppercase tracking-wider text-xs font-mono mb-4">
               VIP Atelier Dispatch
             </h4>
-            <p className="text-slate-400 text-xs mb-4 leading-relaxed">
+            <p className="text-slate-600 text-xs mb-4 leading-relaxed">
               Receive private invitations for seasonal allocation slots, limited edition satin color releases, and private track-day protection events.
             </p>
 
             {subscribed ? (
-              <div className="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 shrink-0" />
-                <span className="font-semibold">Subscribed to VIP dispatch list.</span>
+              <div className="p-3.5 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-800 flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600" />
+                <span className="font-bold">Subscribed to VIP dispatch list.</span>
               </div>
             ) : (
               <form id="footer-newsletter-form" onSubmit={handleSubscribe} className="space-y-2">
@@ -179,11 +179,11 @@ export const AegisFooter: React.FC = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="supercar.owner@example.com"
-                  className="w-full bg-[#0F172A] border border-slate-700 rounded-xl px-3.5 py-2 text-xs text-white placeholder:text-slate-500 focus:border-amber-500 focus:outline-none"
+                  className="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:border-amber-500 focus:outline-none shadow-sm"
                 />
                 <button
                   type="submit"
-                  className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs tracking-wide transition-all shadow-[0_0_15px_rgba(245,158,11,0.2)] flex items-center justify-center gap-1.5"
+                  className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs tracking-wide transition-all shadow-sm flex items-center justify-center gap-1.5"
                 >
                   <span>Join Atelier Registry</span>
                   <ArrowRight className="w-3.5 h-3.5 text-slate-950" />
@@ -191,15 +191,15 @@ export const AegisFooter: React.FC = () => {
               </form>
             )}
 
-            <div className="mt-4 pt-4 border-t border-slate-800 text-[10px] text-slate-500">
+            <div className="mt-4 pt-4 border-t border-slate-200 text-[10px] text-slate-500 font-medium">
               Zero spam policy. Unsubscribe anytime.
             </div>
           </div>
         </div>
 
         {/* Bottom Accreditations Bar & Copyright */}
-        <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <div className="flex flex-wrap items-center gap-4 text-[11px] font-mono">
+        <div className="pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+          <div className="flex flex-wrap items-center gap-4 text-[11px] font-mono font-medium">
             <span>XPEL Certified Facility</span>
             <span>•</span>
             <span>3M Authorized Commercial Studio</span>
@@ -209,7 +209,7 @@ export const AegisFooter: React.FC = () => {
 
           <div className="text-center sm:text-right">
             <p>© {new Date().getFullYear()} Aegis Auto Atelier Inc. All rights reserved.</p>
-            <p className="text-[10px] text-slate-600 mt-0.5">
+            <p className="text-[10px] text-slate-400 mt-0.5">
               100% Computer-Cut CAD Patterns • Zero Blade-on-Paint Guarantee
             </p>
           </div>
