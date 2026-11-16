@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Calculator, Check, Sparkles, Shield, Clock, Award, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import { PreloadBookingData } from "./AegisQuoteModal";
 
 interface AegisConfiguratorProps {
@@ -161,10 +162,16 @@ export const AegisConfigurator: React.FC<AegisConfiguratorProps> = ({ onReserveS
   };
 
   return (
-    <section id="configurator" className="py-20 sm:py-28 bg-white relative">
+    <section id="configurator" className="py-20 sm:py-28 bg-white relative scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        {/* Section Header with Motion */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-amber-300 mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
             <span className="text-xs font-mono font-bold tracking-widest text-amber-800 uppercase">
@@ -182,12 +189,17 @@ export const AegisConfigurator: React.FC<AegisConfiguratorProps> = ({ onReserveS
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
             Select your vehicle profile, desired protection architecture, and topcoat finish to receive an instant, transparent estimate with turn-around time and warranty term.
           </p>
-        </div>
+        </motion.div>
 
         {/* 3-Step Interactive Configurator Form */}
         <div className="space-y-12">
           {/* STEP 1: Vehicle Segment */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-30px" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
             <div className="flex items-center gap-3 mb-5">
               <span className="w-7 h-7 rounded-full bg-amber-100 border border-amber-300 text-amber-800 font-mono font-bold text-xs flex items-center justify-center">
                 01
@@ -224,10 +236,15 @@ export const AegisConfigurator: React.FC<AegisConfiguratorProps> = ({ onReserveS
                 );
               })}
             </div>
-          </div>
+          </motion.div>
 
           {/* STEP 2: Protection Package */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-30px" }}
+            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+          >
             <div className="flex items-center gap-3 mb-5">
               <span className="w-7 h-7 rounded-full bg-amber-100 border border-amber-300 text-amber-800 font-mono font-bold text-xs flex items-center justify-center">
                 02
@@ -282,10 +299,15 @@ export const AegisConfigurator: React.FC<AegisConfiguratorProps> = ({ onReserveS
                 );
               })}
             </div>
-          </div>
+          </motion.div>
 
           {/* STEP 3: Finish & Material */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-30px" }}
+            transition={{ duration: 0.5, delay: 0.15, ease: "easeOut" }}
+          >
             <div className="flex items-center gap-3 mb-5">
               <span className="w-7 h-7 rounded-full bg-amber-100 border border-amber-300 text-amber-800 font-mono font-bold text-xs flex items-center justify-center">
                 03
@@ -325,11 +347,17 @@ export const AegisConfigurator: React.FC<AegisConfiguratorProps> = ({ onReserveS
                 );
               })}
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Dynamic Full-Width Result Bar (Light Mode Pristine) */}
-        <div className="mt-12 p-6 sm:p-8 rounded-2xl bg-amber-50/70 border-2 border-amber-400 shadow-lg flex flex-col lg:flex-row items-center justify-between gap-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mt-12 p-6 sm:p-8 rounded-2xl bg-amber-50/70 border-2 border-amber-400 shadow-lg flex flex-col lg:flex-row items-center justify-between gap-6"
+        >
           {/* Left Details */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full lg:w-auto">
             <div>
@@ -376,7 +404,7 @@ export const AegisConfigurator: React.FC<AegisConfiguratorProps> = ({ onReserveS
               <ArrowRight className="w-4 h-4 text-slate-950 ml-1" />
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

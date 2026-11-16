@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import { Award, ShieldCheck, CheckCircle2, Sparkles, Star, Users, Shield, Cpu } from "lucide-react";
+import { motion } from "framer-motion";
 
 export const AegisMilestones: React.FC = () => {
   const pillars = [
@@ -51,12 +54,18 @@ export const AegisMilestones: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 sm:py-28 bg-white relative">
+    <section id="milestones" className="py-20 sm:py-28 bg-white relative scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top Grid: Image + Pillars */}
+        {/* Top Grid: Image + Pillars with Lateral Entry Animations */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
-          {/* Left Column: Authentic Photography with Badge (5 cols) */}
-          <div className="lg:col-span-5 relative">
+          {/* Left Column: Authentic Photography with Lateral Entry (Left to Right) */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 relative"
+          >
             <div className="relative h-[420px] sm:h-[500px] w-full rounded-2xl overflow-hidden border border-slate-200 shadow-xl bg-slate-100">
               <Image
                 src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=1200&auto=format&fit=crop"
@@ -82,10 +91,16 @@ export const AegisMilestones: React.FC = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Right Column: 4 Core Pillars (7 cols) */}
-          <div className="lg:col-span-7">
+          {/* Right Column: 4 Core Pillars with Lateral Entry (Right to Left) */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7"
+          >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-amber-300 mb-4">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
               <span className="text-xs font-mono font-bold tracking-widest text-amber-800 uppercase">
@@ -118,14 +133,18 @@ export const AegisMilestones: React.FC = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
 
-        {/* Bottom 5 Animated Stats Counters */}
+        {/* Bottom 5 Animated Stats Counters with Staggered Motion */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 pt-10 border-t border-slate-200">
           {stats.map((st, idx) => (
-            <div
+            <motion.div
               key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ duration: 0.5, delay: idx * 0.08, ease: "easeOut" }}
               className="p-5 rounded-2xl bg-[#F8FAFC] border border-slate-200 text-center flex flex-col justify-center shadow-sm"
             >
               <div className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-amber-700 font-mono tracking-tight mb-1">
@@ -137,7 +156,7 @@ export const AegisMilestones: React.FC = () => {
               <div className="text-[11px] text-slate-500 leading-snug">
                 {st.sub}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

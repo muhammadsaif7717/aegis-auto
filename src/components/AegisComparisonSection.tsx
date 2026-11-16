@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { Shield, Palette, Check, Minus, HelpCircle, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface AegisComparisonSectionProps {
   onOpenBooking: () => void;
@@ -52,10 +53,16 @@ export const AegisComparisonSection: React.FC<AegisComparisonSectionProps> = ({ 
   ];
 
   return (
-    <section id="comparison" className="py-20 sm:py-28 bg-white relative">
+    <section id="comparison" className="py-20 sm:py-28 bg-white relative scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        {/* Section Header with Motion */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-amber-300 mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
             <span className="text-xs font-mono font-bold tracking-widest text-amber-800 uppercase">
@@ -73,12 +80,18 @@ export const AegisComparisonSection: React.FC<AegisComparisonSectionProps> = ({ 
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
             Understanding the structural physics and chemical distinction between elastomeric urethane armor (PPF) and cast aesthetic film (Vinyl) helps you choose the perfect investment for your supercar.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Feature Cards Comparison */}
+        {/* Feature Cards Comparison with Motion */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
           {/* Card 1: PPF */}
-          <div className="p-8 rounded-2xl bg-[#F8FAFC] border-2 border-amber-500/60 shadow-md flex flex-col justify-between">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="p-8 rounded-2xl bg-[#F8FAFC] border-2 border-amber-500/60 shadow-md flex flex-col justify-between"
+          >
             <div>
               <div className="flex items-center justify-between gap-4 mb-6">
                 <div className="flex items-center gap-3">
@@ -119,10 +132,16 @@ export const AegisComparisonSection: React.FC<AegisComparisonSectionProps> = ({ 
               <span className="text-slate-500">Starting from:</span>
               <span className="text-lg font-mono font-extrabold text-slate-900">$1,899 (Track Pack)</span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Card 2: Vinyl */}
-          <div className="p-8 rounded-2xl bg-[#F8FAFC] border border-slate-300 shadow-sm flex flex-col justify-between">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="p-8 rounded-2xl bg-[#F8FAFC] border border-slate-300 shadow-sm flex flex-col justify-between"
+          >
             <div>
               <div className="flex items-center justify-between gap-4 mb-6">
                 <div className="flex items-center gap-3">
@@ -163,11 +182,17 @@ export const AegisComparisonSection: React.FC<AegisComparisonSectionProps> = ({ 
               <span className="text-slate-500">Starting from:</span>
               <span className="text-lg font-mono font-extrabold text-slate-900">$2,499 (Full Vehicle)</span>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Detailed Side-by-Side Metrology Table */}
-        <div className="rounded-2xl bg-white border border-slate-200 overflow-hidden shadow-sm">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-30px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="rounded-2xl bg-white border border-slate-200 overflow-hidden shadow-sm"
+        >
           <div className="px-6 py-4 bg-slate-100/80 border-b border-slate-200 flex items-center justify-between">
             <h4 className="text-sm font-bold text-slate-900 font-mono uppercase tracking-wider">
               Technical Comparison Matrix
@@ -209,7 +234,7 @@ export const AegisComparisonSection: React.FC<AegisComparisonSectionProps> = ({ 
               <ArrowRight className="w-3.5 h-3.5 text-slate-950" />
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

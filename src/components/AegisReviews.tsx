@@ -1,13 +1,22 @@
+"use client";
+
 import React from "react";
 import { REVIEWS_DATA } from "@/data/aegisData";
 import { Star, ShieldCheck, Quote } from "lucide-react";
+import { motion } from "framer-motion";
 
 export const AegisReviews: React.FC = () => {
   return (
-    <section id="reviews" className="py-20 sm:py-28 bg-[#F8FAFC] relative">
+    <section id="reviews" className="py-20 sm:py-28 bg-[#F8FAFC] relative scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header & Compact Trust Banner */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16">
+        {/* Section Header & Compact Trust Banner with Motion */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16"
+        >
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-amber-300 mb-4">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
@@ -39,13 +48,17 @@ export const AegisReviews: React.FC = () => {
               <div className="text-[10px] text-slate-500">Google Verified & DuPont Registry</div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        {/* 6 Rich Testimonial Cards */}
+        {/* 6 Rich Testimonial Cards with Staggered Motion */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {REVIEWS_DATA.map((rev) => (
-            <div
+          {REVIEWS_DATA.map((rev, idx) => (
+            <motion.div
               key={rev.id}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ duration: 0.5, delay: idx * 0.08, ease: "easeOut" }}
               className="p-6 sm:p-7 rounded-2xl bg-white border border-slate-200 hover:border-amber-400 transition-all flex flex-col justify-between shadow-sm"
             >
               <div>
@@ -53,7 +66,7 @@ export const AegisReviews: React.FC = () => {
                 <div className="flex items-center justify-between gap-2 mb-4">
                   <div className="flex items-center gap-1 text-amber-500">
                     {[...Array(rev.rating)].map((_, i) => (
-                  <Star key={i} className="w-3.5 h-3.5 fill-amber-500" />
+                      <Star key={i} className="w-3.5 h-3.5 fill-amber-500" />
                     ))}
                   </div>
                   <span className="text-[11px] font-mono text-slate-500">{rev.date}</span>
@@ -94,7 +107,7 @@ export const AegisReviews: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

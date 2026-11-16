@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
 import { Sparkles, Cpu, Wind, ShieldCheck, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 export const AegisWorkflow: React.FC = () => {
   const steps = [
@@ -42,10 +45,16 @@ export const AegisWorkflow: React.FC = () => {
   ];
 
   return (
-    <section id="process" className="py-20 sm:py-28 bg-[#F8FAFC] relative">
+    <section id="process" className="py-20 sm:py-28 bg-[#F8FAFC] relative scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        {/* Section Header with Motion */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-amber-300 mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
             <span className="text-xs font-mono font-bold tracking-widest text-amber-800 uppercase">
@@ -63,15 +72,19 @@ export const AegisWorkflow: React.FC = () => {
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
             From surgical exterior decontamination to short-wave infrared edge curing, every phase is engineered with clinical rigor to guarantee invisible protection.
           </p>
-        </div>
+        </motion.div>
 
-        {/* 4 Process Cards with Connected Visual Flow */}
+        {/* 4 Process Cards with Connected Visual Flow & Staggered Motion */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
           {steps.map((st, idx) => {
             const Icon = st.icon;
             return (
-              <div
+              <motion.div
                 key={idx}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-30px" }}
+                transition={{ duration: 0.5, delay: idx * 0.1, ease: "easeOut" }}
                 className="relative group p-6 sm:p-7 rounded-2xl bg-white border border-slate-200/90 hover:border-amber-400 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_10px_30px_rgba(217,119,6,0.1)] shadow-sm"
               >
                 <div>
@@ -102,7 +115,7 @@ export const AegisWorkflow: React.FC = () => {
                   <span className="text-slate-500 block text-[10px] uppercase font-bold">QC Standard:</span>
                   {st.technicalPoint}
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>

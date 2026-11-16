@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { MapPin, Phone, Mail, Clock, Calendar, Sparkles, Navigation } from "lucide-react";
+import { motion } from "framer-motion";
+import { Phone, Mail, Clock, Sparkles } from "lucide-react";
 
 interface AegisLocationProps {
   onOpenBooking: () => void;
@@ -15,10 +16,16 @@ export const AegisLocation: React.FC<AegisLocationProps> = ({ onOpenBooking }) =
   ];
 
   return (
-    <section id="location" className="py-20 sm:py-28 bg-white relative">
+    <section id="location" className="py-20 sm:py-28 bg-white relative scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-amber-300 mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
             <span className="text-xs font-mono font-bold tracking-widest text-amber-800 uppercase">
@@ -36,12 +43,18 @@ export const AegisLocation: React.FC<AegisLocationProps> = ({ onOpenBooking }) =
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
             Conveniently situated in the premier New York automotive district with high-security subterranean private intake bays for low-ground-clearance exotics.
           </p>
-        </div>
+        </motion.div>
 
         {/* Direct Side-by-Side 6-Col / 6-Col Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Left: 6 Cols Crisp Interactive Map Embed */}
-          <div className="lg:col-span-6 flex flex-col">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-6 flex flex-col"
+          >
             <div className="relative w-full h-[380px] sm:h-[450px] lg:h-full min-h-[380px] rounded-2xl overflow-hidden border border-slate-300 shadow-md bg-slate-100">
               <iframe
                 title="Aegis Auto Cleanroom Studio Location"
@@ -71,10 +84,16 @@ export const AegisLocation: React.FC<AegisLocationProps> = ({ onOpenBooking }) =
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right: 6 Cols Studio Details & Schedule Table */}
-          <div className="lg:col-span-6 p-6 sm:p-8 rounded-2xl bg-[#F8FAFC] border border-slate-200 shadow-md flex flex-col justify-between">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="lg:col-span-6 p-6 sm:p-8 rounded-2xl bg-[#F8FAFC] border border-slate-200 shadow-md flex flex-col justify-between"
+          >
             <div>
               {/* Direct Contacts */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
@@ -153,7 +172,7 @@ export const AegisLocation: React.FC<AegisLocationProps> = ({ onOpenBooking }) =
                 <span>Reserve Studio Bench Online</span>
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

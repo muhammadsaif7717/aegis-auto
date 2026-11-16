@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { SERVICES_DATA, ServiceItem } from "@/data/aegisData";
 import { Shield, Clock, Check, Sparkles, ArrowRight, Layers } from "lucide-react";
+import { motion } from "framer-motion";
 import { PreloadBookingData } from "./AegisQuoteModal";
 
 interface AegisServicesGridProps {
@@ -24,15 +25,26 @@ export const AegisServicesGrid: React.FC<AegisServicesGridProps> = ({ onSelectSe
   const handleConfigureClick = (service: ServiceItem) => {
     const configElem = document.getElementById("configurator");
     if (configElem) {
-      configElem.scrollIntoView({ behavior: "smooth" });
+      const lenis = (window as unknown as { __lenis?: { scrollTo: (t: Element | number, opts?: unknown) => void } }).__lenis;
+      if (lenis && typeof lenis.scrollTo === "function") {
+        lenis.scrollTo(configElem, { offset: 0, duration: 1.1 });
+      } else {
+        configElem.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
   return (
-    <section id="services" className="py-20 sm:py-28 bg-[#F8FAFC] relative">
+    <section id="services" className="py-20 sm:py-28 bg-[#F8FAFC] relative scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        {/* Section Header with Motion Reveal */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16"
+        >
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-amber-300 mb-4">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
@@ -52,13 +64,17 @@ export const AegisServicesGrid: React.FC<AegisServicesGridProps> = ({ onSelectSe
           <p className="text-slate-600 text-sm max-w-md">
             Every vehicle enters our sealed cleanroom bays under controlled temperature and positive air pressure. We guarantee seamless edge tucking with zero knife-to-clearcoat contact.
           </p>
-        </div>
+        </motion.div>
 
-        {/* 6 Rich Service Cards */}
+        {/* 6 Rich Service Cards with Staggered Motion */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {SERVICES_DATA.map((service) => (
-            <div
+          {SERVICES_DATA.map((service, idx) => (
+            <motion.div
               key={service.id}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ duration: 0.5, delay: idx * 0.08, ease: "easeOut" }}
               className="group flex flex-col rounded-2xl bg-white border border-slate-200/90 hover:border-amber-400 transition-all duration-300 overflow-hidden hover:shadow-[0_12px_36px_rgba(217,119,6,0.12)] shadow-sm"
             >
               {/* Card Image Header */}
@@ -155,7 +171,7 @@ export const AegisServicesGrid: React.FC<AegisServicesGridProps> = ({ onSelectSe
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

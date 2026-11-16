@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { AegisLogo } from "./AegisLogo";
 import {
@@ -28,6 +28,9 @@ export const AegisNavbar: React.FC<AegisNavbarProps> = ({
   const [activeSection, setActiveSection] = useState("hero");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const isClickScrollingRef = useRef(false);
+  const clickScrollTimerRef = useRef<NodeJS.Timeout | null>(null);
+
   const navLinks = [
     { label: "Home", href: "#hero", id: "hero" },
     { label: "Studio", href: "#studio", id: "studio" },
@@ -40,26 +43,59 @@ export const AegisNavbar: React.FC<AegisNavbarProps> = ({
     { label: "Location", href: "#location", id: "location" },
   ];
 
-  // Scroll detection & Scroll-Spy
+  // Bulletproof ScrollSpy with Focal-Point Detection & Click-Lock
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 30);
 
-      // Section scroll spy
-      const sections = navLinks.map((link) => link.id);
-      const scrollPosition = window.scrollY + 200;
+          // If user recently clicked a nav link, skip scroll spy recalculation to avoid flickering
+          if (!isClickScrollingRef.current) {
+            let current = "hero";
+            if (window.scrollY < 120) {
+              current = "hero";
+            } else if (
+              window.innerHeight + window.scrollY >=
+              document.documentElement.scrollHeight - 80
+            ) {
+              // At bottom of page -> select last section (location/journal)
+              current = "location";
+            } else {
+              const sectionIds = navLinks.map((l) => l.id);
+              const focalPoint = 200; // Focal line just below sticky navbar
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i]);
-        if (el && el.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i]);
-          break;
-        }
+              // Reverse loop: find deepest section whose top has crossed the focal line
+              for (let i = sectionIds.length - 1; i >= 0; i--) {
+                const el = document.getElementById(sectionIds[i]);
+                if (el) {
+                  const rect = el.getBoundingClientRect();
+                  if (rect.top <= focalPoint) {
+                    current = sectionIds[i];
+                    break;
+                  }
+                }
+              }
+            }
+            setActiveSection((prev) => (prev !== current ? current : prev));
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (clickScrollTimerRef.current) {
+        clearTimeout(clickScrollTimerRef.current);
+      }
+    };
   }, []);
 
   // Lock scroll when mobile drawer is open
@@ -77,7 +113,27 @@ export const AegisNavbar: React.FC<AegisNavbarProps> = ({
       e.preventDefault();
       const targetId = href.replace("#", "");
       const elem = document.getElementById(targetId);
-      if (elem) {
+
+      // Lock scrollspy immediately to clicked link
+      isClickScrollingRef.current = true;
+      setActiveSection(targetId);
+
+      if (clickScrollTimerRef.current) {
+        clearTimeout(clickScrollTimerRef.current);
+      }
+      clickScrollTimerRef.current = setTimeout(() => {
+        isClickScrollingRef.current = false;
+      }, 1100);
+
+      // Coordinate with Lenis
+      const lenis = (window as unknown as { __lenis?: { scrollTo: (t: Element | number, opts?: unknown) => void } }).__lenis;
+      if (lenis && typeof lenis.scrollTo === "function") {
+        if (targetId === "hero") {
+          lenis.scrollTo(0, { duration: 1.1 });
+        } else if (elem) {
+          lenis.scrollTo(elem, { offset: 0, duration: 1.1 });
+        }
+      } else if (elem) {
         elem.scrollIntoView({ behavior: "smooth" });
       }
     }

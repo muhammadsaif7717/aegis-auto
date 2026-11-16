@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
 import { ShieldCheck, Wind, Cpu, Sparkles, Gauge, Scissors } from "lucide-react";
+import { motion } from "framer-motion";
 
 export const AegisStudioIdentity: React.FC = () => {
   const standards = [
@@ -54,10 +57,16 @@ export const AegisStudioIdentity: React.FC = () => {
   ];
 
   return (
-    <section id="studio" className="py-20 sm:py-28 bg-white relative">
+    <section id="studio" className="py-20 sm:py-28 bg-white relative scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        {/* Section Header with Fade-In Animation */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-amber-300 mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
             <span className="text-xs font-mono font-bold tracking-widest text-amber-800 uppercase">
@@ -75,15 +84,19 @@ export const AegisStudioIdentity: React.FC = () => {
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
             Most detailing shops work in drafty garages with hand-held utility knives. Aegis operates like a high-precision cleanroom aerospace laboratory dedicated to preserving multi-million dollar automotive art.
           </p>
-        </div>
+        </motion.div>
 
-        {/* 6 Clean Flat Standard Cards */}
+        {/* 6 Clean Flat Standard Cards with Staggered Motion Reveal */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {standards.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div
+              <motion.div
                 key={idx}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-30px" }}
+                transition={{ duration: 0.5, delay: idx * 0.08, ease: "easeOut" }}
                 className="group p-6 sm:p-7 rounded-2xl bg-[#F8FAFC] border border-slate-200/90 hover:border-amber-400 hover:bg-white transition-all duration-300 hover:shadow-[0_8px_30px_rgba(217,119,6,0.1)] flex flex-col justify-between"
               >
                 <div>
@@ -113,7 +126,7 @@ export const AegisStudioIdentity: React.FC = () => {
                   <span className="text-slate-500 font-medium">Standard Spec:</span>
                   <span className="font-mono font-bold text-amber-800">{item.metric}</span>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
