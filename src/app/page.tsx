@@ -16,7 +16,6 @@ import { AegisJournal } from "@/components/AegisJournal";
 import { AegisFooter } from "@/components/AegisFooter";
 import { AegisQuoteModal, PreloadBookingData } from "@/components/AegisQuoteModal";
 import { AegisTrackerModal } from "@/components/AegisTrackerModal";
-import { AegisMobileDock } from "@/components/AegisMobileDock";
 
 export default function HomePage() {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
@@ -103,9 +102,6 @@ export default function HomePage() {
         isOpen={isTrackerOpen}
         onClose={handleCloseTracker}
       />
-
-      {/* 16. Mobile Sticky Bottom Action Dock */}
-      <AegisMobileDock onOpenBooking={() => handleOpenBooking()} />
     </div>
   );
 }

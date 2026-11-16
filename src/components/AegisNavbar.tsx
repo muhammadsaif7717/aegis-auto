@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import { AegisLogo } from "./AegisLogo";
 import {
   Clock,
@@ -275,94 +276,119 @@ export const AegisNavbar: React.FC<AegisNavbarProps> = ({
         </div>
       </nav>
 
-      {/* 3. Mobile Navigation Drawer (Clean White) */}
-      {mobileMenuOpen && (
-        <div
-          className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm xl:hidden"
-          onClick={() => setMobileMenuOpen(false)}
-        >
-          <div
-            className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-white border-l border-slate-200 p-6 flex flex-col justify-between shadow-2xl overflow-y-auto"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div>
-              {/* Drawer Top */}
-              <div className="flex items-center justify-between pb-4 border-b border-slate-200 mb-6">
-                <AegisLogo size="sm" />
-                <button
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="p-2 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors"
-                  aria-label="Close navigation menu"
-                >
-                  <X className="w-5 h-5" />
-                </button>
+      {/* 3. Mobile Navigation Drawer (Right to Left Slide-in with Drag Gesture) */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <div className="fixed inset-0 z-50 xl:hidden">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm"
+              onClick={() => setMobileMenuOpen(false)}
+            />
+
+            {/* Sliding Drawer Panel (From Right to Left) */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 30, stiffness: 280 }}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={{ left: 0, right: 0.6 }}
+              onDragEnd={(_e, info) => {
+                if (info.offset.x > 80 || info.velocity.x > 300) {
+                  setMobileMenuOpen(false);
+                }
+              }}
+              className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-white border-l border-slate-200 p-6 flex flex-col justify-between shadow-2xl overflow-y-auto z-10 touch-pan-y"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div>
+                {/* Visual swipe affordance indicator */}
+                <div className="w-10 h-1 bg-slate-200 rounded-full mx-auto mb-4 sm:hidden" />
+
+                {/* Drawer Top */}
+                <div className="flex items-center justify-between pb-4 border-b border-slate-200 mb-6">
+                  <AegisLogo size="sm" />
+                  <button
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="p-2 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+                    aria-label="Close navigation menu"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+
+                {/* Drawer Links */}
+                <nav className="space-y-1">
+                  {navLinks.map((link) => {
+                    const isActive = activeSection === link.id;
+                    return (
+                      <a
+                        key={link.id}
+                        href={link.href}
+                        onClick={(e) => handleNavClick(e, link.href)}
+                        className={`flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-semibold transition-colors ${
+                          isActive
+                            ? "bg-amber-50 text-amber-700 border border-amber-200"
+                            : "text-slate-700 hover:bg-slate-100 hover:text-slate-950"
+                        }`}
+                      >
+                        <span>{link.label}</span>
+                        <ChevronRight className="w-4 h-4 text-slate-400" />
+                      </a>
+                    );
+                  })}
+                </nav>
+
+                {/* Action Cluster in Drawer */}
+                <div className="mt-6 pt-6 border-t border-slate-200 space-y-3">
+                  <button
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      onOpenTracker();
+                    }}
+                    className="w-full py-3 px-4 rounded-xl text-xs font-bold text-slate-800 bg-slate-100 hover:bg-slate-200 border border-slate-300 flex items-center justify-center gap-2 active:scale-98 transition-transform"
+                  >
+                    <Search className="w-4 h-4 text-amber-600" />
+                    <span>Track Vehicle Build (Ticket)</span>
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      onOpenBooking();
+                    }}
+                    className="w-full py-3 px-4 rounded-xl text-xs font-bold text-slate-950 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 flex items-center justify-center gap-2 shadow-md active:scale-98 transition-transform"
+                  >
+                    <Sparkles className="w-4 h-4 text-slate-950" />
+                    <span>Book Studio Slot</span>
+                  </button>
+                </div>
               </div>
 
-              {/* Drawer Links */}
-              <nav className="space-y-1">
-                {navLinks.map((link) => {
-                  const isActive = activeSection === link.id;
-                  return (
-                    <a
-                      key={link.id}
-                      href={link.href}
-                      onClick={(e) => handleNavClick(e, link.href)}
-                      className={`flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
-                        isActive
-                          ? "bg-amber-50 text-amber-700 border border-amber-200"
-                          : "text-slate-700 hover:bg-slate-100 hover:text-slate-950"
-                      }`}
-                    >
-                      <span>{link.label}</span>
-                      <ChevronRight className="w-4 h-4 text-slate-400" />
-                    </a>
-                  );
-                })}
-              </nav>
-
-              {/* Action Cluster in Drawer */}
-              <div className="mt-6 pt-6 border-t border-slate-200 space-y-3">
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    onOpenTracker();
-                  }}
-                  className="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-slate-800 bg-slate-100 hover:bg-slate-200 border border-slate-300 flex items-center justify-center gap-2"
+              {/* Bottom Contact in Drawer */}
+              <div className="pt-6 border-t border-slate-200 text-xs text-slate-600 space-y-2">
+                <a
+                  href="tel:+18005899727"
+                  className="flex items-center gap-2 text-amber-700 font-mono font-bold"
                 >
-                  <Search className="w-4 h-4 text-amber-600" />
-                  <span>Track Vehicle Build (Ticket)</span>
-                </button>
-
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    onOpenBooking();
-                  }}
-                  className="w-full py-3 px-4 rounded-xl text-xs font-bold text-slate-950 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 flex items-center justify-center gap-2 shadow-md"
-                >
-                  <Sparkles className="w-4 h-4 text-slate-950" />
-                  <span>Book Studio Slot</span>
-                </button>
+                  <Phone className="w-4 h-4 text-amber-600" />
+                  <span>+1 (800) 589-WRAP</span>
+                </a>
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4 text-slate-500" />
+                  <span>Manhattan Cleanroom • 25 Main St</span>
+                </div>
               </div>
-            </div>
-
-            {/* Bottom Contact in Drawer */}
-            <div className="pt-6 border-t border-slate-200 text-xs text-slate-600 space-y-2">
-              <a
-                href="tel:+18005899727"
-                className="flex items-center gap-2 text-amber-700 font-mono font-bold"
-              >
-                <Phone className="w-4 h-4 text-amber-600" />
-                <span>+1 (800) 589-WRAP</span>
-              </a>
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-slate-500" />
-                <span>Manhattan Cleanroom • 25 Main St</span>
-              </div>
-            </div>
+            </motion.div>
           </div>
-        </div>
-      )}
+        )}
+      </AnimatePresence>
     </header>
   );
 };
